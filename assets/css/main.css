@@ -1,12 +1,13 @@
 /**
 *Project OBLS
-*Author: Framework;
+*Author: Framework Group;
 *Online Based Learning System
 */
 
 .main-menu{
-	font-size: 18px;
+	font-size: 16px;
 	border-top: 3px solid green;
+	margin-bottom: 0px;
 }
 .main-menu i{
 	color: green;
@@ -21,4 +22,46 @@
 }
 .main-menu .dropdown-menu li a{
     white-space: normal;
+}
+textarea .question-text{
+	margin: 0;
+	width: 400px;
+}
+.qs-panel{
+	padding: 8px;
+}
+.qs-panel-footer{
+	margin: 0;
+	padding: 5px;
+}
+.post-panel{
+	margin-bottom: -14px;
+}
+.post_question{
+	padding-top: 10px;
+}
+/*Border for whole site*/
+.obls_border{
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+}
+/*qestion list*/
+.qs_list ul li{
+	padding: 20px 10px 6px;
+}
+.qs_list ul li a{
+	font-weight: bold;
+	color: #3060A8;
+}
+.badge-info {
+  background-color: #3a87ad;
+}
+.badge-info:hover {
+  background-color: #2d6987;
+}
+.postedby{
+	display: block;
+	padding-top: 10px;
+	font-size: 13px;
+	font-style: italic;
 }
