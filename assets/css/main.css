@@ -4,6 +4,7 @@
 *Online Based Learning System
 */
 
+/*start index page design*/
 .main-menu{
 	font-size: 16px;
 	border-top: 3px solid green;
@@ -22,10 +23,6 @@
 }
 .main-menu .dropdown-menu li a{
     white-space: normal;
-}
-textarea .question-text{
-	margin: 0;
-	width: 400px;
 }
 .qs-panel{
 	padding: 8px;
@@ -64,4 +61,50 @@ textarea .question-text{
 	padding-top: 10px;
 	font-size: 13px;
 	font-style: italic;
+}
+.footer_area{
+	background: #ddd;
+	height: 50px;
+	display: block;
+	padding-top: 15px;
+}
+.obls_margin{
+	margin-top: 55px;
+}
+.obls_padding{
+	padding-top: 15px;
+}
+/*end index page design*/
+
+/* style for clock */
+.tabBlock
+{
+    background-color: transparent;
+    border:solid 0px #FFA54F;
+    border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;
+    min-width:200px;
+    width:100%;
+    overflow:hidden;
+    display:block;
+}
+.clock
+{
+    vertical-align:middle;
+    font-family:Orbitron;
+    font-size:40px;
+    font-weight:normal;
+    color:green;
+    padding:0 10px;
+}
+.clocklg 
+{
+    vertical-align:middle; 
+    font-family:Orbitron;
+    font-size:18px;
+    font-weight:normal;
+    color:green;
+}
+/*end clock style*/
+#section2{
+	min-height: 480px;
 }

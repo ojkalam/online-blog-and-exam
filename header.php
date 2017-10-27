@@ -1,3 +1,8 @@
+<?php
+ob_start();
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,8 +21,22 @@
     <!-- Custom Fonts -->
     <link href="assets/font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css">
     
-    <!-- Custom CSS -->
+
+    <!-- main css file -->
     <link rel="stylesheet" href="assets/css/main.css">
+     <!-- jQuery -->
+    <script src="assets/js/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- tinymce script -->
+    <script src="assets/js/tinymce/tinymce.min.js"></script>
+    <script>
+    tinymce.init({
+      selector: '#writepost'
+    });
+    </script>
+    <!-- Custom JavaScript -->
+    <script src="assets/js/obls.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,10 +46,10 @@
     <![endif]-->
 
 </head>
-<body>
+<body onload="digitized();">
         <!-- Navigation -->
-    <header class="clearfix">
-        <nav class="navbar navbar-default navbar-static-top main-menu">
+    <header class="header_area">
+        <nav class="navbar navbar-default navbar-fixed-top main-menu">
             <div class="container">
               <!-- Brand and toggle get grouped for better mobile display -->
               <div class="navbar-header">
@@ -61,12 +80,12 @@
                     </ul>
                   </li>
                 </ul>
-               <!--  <form class="navbar-form navbar-left" role="search">
+                <form class="navbar-form navbar-left" role="search">
                   <div class="form-group">
                     <input type="text" class="form-control" placeholder="Search">
                   </div>
-                  <button type="submit" class="btn btn-default">Submit</button>
-                </form>  -->
+                  <button type="submit" class="btn btn-default"><span style="color:green" class="glyphicon glyphicon-search"></button>
+                </form> 
                 <ul class="nav navbar-nav navbar-right">
                   <li><a href="#">Link</a></li>
                   
@@ -203,140 +222,3 @@
           </div><!-- /.container -->
         </nav>
    </header>
-      <!-- Start main content section -->
-    <section id="ask_question_section" class="clearfix">
-      <div class="container post_question obls_border">
-        <div class="row">
-          <div class="col-md-6 col-md-offset-2">
-            <form action="" method="post" role="form" enctype="multipart/form-data">
-                <!-- <div class="arrow"></div> -->
-                  <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Post your Questions/Opinions/Thought</div>
-                      <div class="panel-body qs-panel">
-                        <div class="">
-                           <textarea name="question" cols="40" rows="10" id="status_message" class="form-control question-text" style="height: 60px; overflow: hidden;" placeholder="Write Here..."></textarea> 
-                        </div>
-                      </div>
-                      <div class="panel-footer qs-panel-footer">
-                        <div class="row post-panel">
-                          <div class="col-md-8">
-                            <div class="form-group col-md-5">
-                                <select name="subject" class="form-control pull-left input-sm">
-                                  <option selected="selected">Select Subject</option>
-                                  <option value="2">Only my friends</option>
-                                  <option value="3">Only me</option>
-                                </select>  
-                            </div>
-                               <div class="col-md-7">
-                                  <div class="input-group">
-                                      <label class="input-group-btn">
-                                        <span class="btn btn-default btn-sm">
-                                          <input type="file" name="image" class="">
-                                         </span>
-                                      </label>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-md-3 col-md-offset-1">   
-                              <input type="submit" name="submit" value="Post" class="form-control btn btn-primary btn-sm input-sm">                               
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-               </form>
-            </div>
-            <div class="col-md-4">
-              <h2>search option</h2>
-            </div>
-         </div> 
-      </div>
-    </section>
-    <!-- end of ask question section -->
-    <section class="qeustion_list clearfix">
-      <div class="container obls_border">
-        <div class="row">
-          <div class="col-md-8">
-              <div class="qs_list">
-                 <ul class="list-group">
-                    <li class="list-group-item">
-                      <a href="#">কিভাবে জাভা ও সি ল্যাঙ্গুয়েজ ব্যবহার করে মোবাইল গেইম ও অ্যাপ তৈরী করা যায় ?</a>
-                      <span class="badge">10 answers</span><br><span class="postedby">by Md Abul Kalam on 19 oct '17</span>
-                   </li>
-                   <li class="list-group-item">
-                      <a href="#">ইলাষ্ট্রেটর ভেক্টর ভিত্তিক কাজের জন্য সফটঅয়্যার, অন্যদিকে ফটোশপ বিটম্যাপ সফটঅয়্যার। ফটোশপের কোন কাজ থেকে ইলাষ্ট্রেটরের ভেক্টর আর্ট বানাতে চান ?</a>
-                      <span class="badge">10 answers</span><br><span class="postedby">by Md Abul Kalam on 19 oct '17</span>
-                   </li>
-                   <li class="list-group-item">
-                      <a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, vero.</a>
-                      <span class="badge">10 answers</span><br><span class="postedby">by Md Abul Kalam on 19 oct '17</span>
-                   </li>
-                   <li class="list-group-item">
-                      <a href="#">কিভাবে জাভা ও সি ল্যাঙ্গুয়েজ ব্যবহার করে মোবাইল গেইম ও অ্যাপ তৈরী করা যায় ?</a>
-                      <span class="badge">10 answers</span><br><span class="postedby">by Md Abul Kalam on 19 oct '17</span>
-                   </li>
-                   <li class="list-group-item">
-                      <a href="#">কিভাবে জাভা ও সি ল্যাঙ্গুয়েজ ব্যবহার ?</a>
-                      <span class="badge">10 answers</span><br><span class="postedby">by Md Abul Kalam on 19 oct '17</span>
-                   </li>
-                   <li class="list-group-item">
-                      <a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit amet sunt tempora maiores, et consequatur tenetur a facilis quod itaque.?</a>
-                      <span class="badge">10 answers</span><br><span class="postedby">by Md Abul Kalam on 19 oct '17</span>
-                   </li>
-                   <li class="list-group-item">
-                      <a href="#">ইলাষ্ট্রেটর ভেক্টর ভিত্তিক কাজের জন্য সফটঅয়্যার, অন্যদিকে ফটোশপ বিটম্যাপ সফটঅয়্যার। ফটোশপের কোন কাজ থেকে ইলাষ্ট্রেটরের ভেক্টর আর্ট বানাতে চান ?</a>
-                      <span class="badge">10 answers</span><br><span class="postedby">by Md Abul Kalam on 19 oct '17</span>
-                   </li>
-                   <li class="list-group-item">
-                      <a href="#">কিভাবে জাভা ও?</a>
-                      <span class="badge">10 answers</span><br><span class="postedby">by Md Abul Kalam on 19 oct '17</span>
-                   </li>
-                   <li class="list-group-item">
-                      <a href="#">কিভাবে জাভা ও সি ল্যাঙ্গুয়েজ ব্যবহার করে মোবাইল গেইম ও অ্যাপ তৈরী করা যায় ?</a>
-                      <span class="badge">10 answers</span><br><span class="postedby">by Md Abul Kalam on 19 oct '17</span>
-                   </li>
-                   
-               </ul>
-             </div>
-             <div class="obls_page">
-               <ul class="pagination">
-                <li><a href="#">&lt;&lt; prev</a></li>
-                <li><a href="#">1</a></li>
-                <li class="active"><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">next &gt;&gt;</a></li>
-              </ul>
-             </div>
-          </div>
-          <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                   <h3 class="panel-title">Class (IX) & (X) Subjects</h3>
-                </div>
-                <div class="list-group">
-                   <a href="#" class="list-group-item">Bangla (1)</a>
-                   <a href="#" class="list-group-item">English (23)</a>
-                   <a href="#" class="list-group-item">Mathematics (3)</a>
-                   <a href="#" class="list-group-item">Others (12)</a>
-               </div>
-           </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-      <!-- End main content -->
-     <!-- jQuery -->
-    <script src="assets/js/jquery.min.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="assets/js/bootstrap.min.js"></script>
-    <!-- Custom JavaScript -->
-    <script src="assets/js/obls.js"></script>
-
-        <!-- Custom JQuery -->
-    <script type="text/javascript">
-
-    </script>
-
-</body>
-</html>
