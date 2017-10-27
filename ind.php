@@ -15,8 +15,8 @@ include_once "header.php";
                    <div class="qs_list">
                  <ul class="list-group">
                     <li class="list-group-item">
-                      <a href="#">কিভাবে জাভা ও সি ল্যাঙ্গুয়েজ ব্যবহার করে মোবাইল গেইম ও অ্যাপ তৈরী করা যায় ?</a>
-                      <span class="badge">10 answers</span><br><span class="postedby">by Md Abul Kalam on 19 oct '17</span>
+                      <a href="singlepost.php">কিভাবে জাভা ও সি ল্যাঙ্গুয়েজ ব্যবহার করে মোবাইল গেইম ও অ্যাপ তৈরী করা যায় ?</a>
+                      <span class="badge">10 answers</span><br><span class="postedby">p osted by Md Abul Kalam on 19 oct '17 | subject: <a href="#">English</a></span>
                    </li>
                    <li class="list-group-item">
                       <a href="#">ইলাষ্ট্রেটর ভেক্টর ভিত্তিক কাজের জন্য সফটঅয়্যার, অন্যদিকে ফটোশপ বিটম্যাপ সফটঅয়্যার। ফটোশপের কোন কাজ থেকে ইলাষ্ট্রেটরের ভেক্টর আর্ট বানাতে চান ?</a>

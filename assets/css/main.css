@@ -72,7 +72,7 @@
 	margin-top: 55px;
 }
 .obls_padding{
-	padding-top: 15px;
+	padding-top: 18px;
 }
 /*end index page design*/
 
@@ -105,6 +105,15 @@
     color:green;
 }
 /*end clock style*/
+
+/*single post design*/
 #section2{
 	min-height: 480px;
+}
+#postdetails{
+	min-height: 550px;
+	padding-bottom: 30px;
+}
+.post_img{
+	padding: 20px;
 }
