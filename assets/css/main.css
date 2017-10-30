@@ -117,3 +117,10 @@
 .post_img{
 	padding: 20px;
 }
+
+
+/*exam list design*/
+.examlistpad{
+	padding: 30px 15px;
+	border-bottom: 1px solid #ddd;
+}

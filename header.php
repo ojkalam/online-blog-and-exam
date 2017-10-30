@@ -59,24 +59,20 @@ ob_start();
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-               <a class="navbar-brand" href="#"><i class="fa fa-university" aria-hidden="true"></i> Western Laboratory School</a>
+               <a class="navbar-brand" href="index.php"><i class="fa fa-university" aria-hidden="true"></i> Western Laboratory School</a>
               </div>
 
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                  <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-                  <li><a href="#">Link</a></li>
+                  <li><a href="index.php">Home <span class="sr-only">(current)</span></a></li>
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Online Exam <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                      <li><a href="#">Action</a></li>
-                      <li><a href="#">Another action</a></li>
-                      <li><a href="#">Something else here</a></li>
+                      <li><a href="#">Create exam</a></li>
+                      <li><a href="#">Exam list</a></li>
                       <li role="separator" class="divider"></li>
-                      <li><a href="#">Separated link</a></li>
-                      <li role="separator" class="divider"></li>
-                      <li><a href="#">One more separated link</a></li>
+                      <li><a href="#">Result</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -87,68 +83,7 @@ ob_start();
                   <button type="submit" class="btn btn-default"><span style="color:green" class="glyphicon glyphicon-search"></button>
                 </form> 
                 <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#">Link</a></li>
-                  
-                  <!-- /.dropdown -->
-                  <li class="dropdown">
-                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                          <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
-                      </a>
-                      <ul class="dropdown-menu dropdown-alerts">
-                          <li>
-                              <a href="#">
-                                  <div>
-                                      <i class="fa fa-comment fa-fw"></i> New Comment
-                                      <span class="pull-right text-muted small">4 minutes ago</span>
-                                  </div>
-                              </a>
-                          </li>
-                          <li class="divider"></li>
-                          <li>
-                              <a href="#">
-                                  <div>
-                                      <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                      <span class="pull-right text-muted small">12 minutes ago</span>
-                                  </div>
-                              </a>
-                          </li>
-                          <li class="divider"></li>
-                          <li>
-                              <a href="#">
-                                  <div>
-                                      <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                      <span class="pull-right text-muted small">4 minutes ago</span>
-                                  </div>
-                              </a>
-                          </li>
-                          <li class="divider"></li>
-                          <li>
-                              <a href="#">
-                                  <div>
-                                      <i class="fa fa-tasks fa-fw"></i> New Task
-                                      <span class="pull-right text-muted small">4 minutes ago</span>
-                                  </div>
-                              </a>
-                          </li>
-                          <li class="divider"></li>
-                          <li>
-                              <a href="#">
-                                  <div>
-                                      <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                      <span class="pull-right text-muted small">4 minutes ago</span>
-                                  </div>
-                              </a>
-                          </li>
-                          <li class="divider"></li>
-                          <li>
-                              <a class="text-center" href="#">
-                                  <strong>See All Alerts</strong>
-                                  <i class="fa fa-angle-right"></i>
-                              </a>
-                          </li>
-                      </ul>
-                      <!-- /.dropdown-alerts -->
-                  </li>
+                <!-- message -->
                   <li class="dropdown">
                       <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                           <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -157,7 +92,7 @@ ob_start();
                           <li>
                               <a href="#">
                                   <div>
-                                      <strong>John Smith</strong>
+                                      <strong>John Doe</strong>
                                       <span class="pull-right text-muted">
                                           <em>Yesterday</em>
                                       </span>
@@ -169,7 +104,7 @@ ob_start();
                           <li>
                               <a href="#">
                                   <div>
-                                      <strong>John Smith</strong>
+                                      <strong>John Doe</strong>
                                       <span class="pull-right text-muted">
                                           <em>Yesterday</em>
                                       </span>
@@ -181,7 +116,7 @@ ob_start();
                           <li>
                               <a href="#">
                                   <div>
-                                      <strong>John Smith</strong>
+                                      <strong>John Doe</strong>
                                       <span class="pull-right text-muted">
                                           <em>Yesterday</em>
                                       </span>
