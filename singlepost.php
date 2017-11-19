@@ -10,7 +10,7 @@ include_once "header.php";
 	            <div class="card-body">
 	              <h2 class="card-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, nostrum.?</h2>
 	              <div class="post_img">
-	              	<img class="card-img" src="http://placehold.it/450x300" alt="Card image cap">
+	              	<img class="card-img" src="assets/img/qus.jpg" alt="Card image cap">
 	              </div>
 	              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!
 				<br>

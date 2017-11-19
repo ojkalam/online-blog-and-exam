@@ -26,7 +26,7 @@
                 document.getElementById('dc').innerHTML = hours + ":" + min;
                 document.getElementById('dc_second').innerHTML = sec;
 
-                if (hrs > 12) { 
+                if (hrs >= 12) { 
                     document.getElementById('dc_hour').innerHTML = 'PM'; 
                 }
                 else { 

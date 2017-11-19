@@ -3,7 +3,10 @@
 *Author: Framework Group;
 *Online Based Learning System
 */
-
+/*Main design start*/
+body{
+	background-image: url("../img/logintexture.png");
+}
 /*start index page design*/
 .main-menu{
 	font-size: 16px;
@@ -105,6 +108,14 @@
     color:green;
 }
 /*end clock style*/
+/*Login page design start*/
+.vertical-offset-100{
+	padding-top: 100px;
+}
+.loginhead{
+	padding-bottom: 20px;
+}
+/*login ends*/
 
 /*single post design*/
 #section2{
@@ -115,7 +126,11 @@
 	padding-bottom: 30px;
 }
 .post_img{
-	padding: 20px;
+	padding: 10px;
+}
+.post_img img{
+	width: 550px;
+	height: 420px;
 }
 
 
