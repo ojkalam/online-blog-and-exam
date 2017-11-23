@@ -1,8 +1,32 @@
 <?php
 ob_start();
 
+  include "/libs/session.php";
+  Session::init();
+  Session::checkSession();
+  $filepath = realpath(dirname(__FILE__));
+  include_once ($filepath."/libs/Database.php");
+  include_once ($filepath."/helpers/Format.php");
+
+  spl_autoload_register(function($class){
+    include_once "classes/".$class.".php";
+  });
+
+  //creating object of classes
+  $db = new Database();
+  $fm = new Format();
+  $pc = new PostComment();
 
 ?>
+
+<?php
+//code for cache-control
+  header("Cache-Control: no-cache, must-revalidate");
+  header("Pragma: no-cache"); 
+  header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); 
+  header("Cache-Control: max-age=2592000");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,7 +73,7 @@ ob_start();
 <body onload="digitized();">
         <!-- Navigation -->
     <header class="header_area">
-        <nav class="navbar navbar-default navbar-fixed-top main-menu">
+        <nav class="navbar navbar-default navbar-inverse navbar-fixed-top main-menu">
             <div class="container">
               <!-- Brand and toggle get grouped for better mobile display -->
               <div class="navbar-header">

@@ -21,11 +21,20 @@
         <div class="panel-heading">
            <h3 class="panel-title">Class (IX) & (X) Subjects</h3>
         </div>
-        <div class="list-group">
-           <a href="#" class="list-group-item">Bangla (1)</a>
-           <a href="#" class="list-group-item">English (23)</a>
-           <a href="#" class="list-group-item">Mathematics (3)</a>
-           <a href="#" class="list-group-item">Others (12)</a>
+        <div class="list-group subject_link">
+          <?php
+              $subs = $pc->getSubject();
+              if (isset($subs)) {
+                while ($row = $subs->fetch_assoc()) {
+          ?>
+                  <a href="#" class="list-group-item"><?php echo $row['name'];?></a>
+            <?php
+                }
+              }else{
+                echo "nothing found";
+              }
+          ?>
+           
        </div>
     </div>
 

@@ -10,11 +10,11 @@ body{
 /*start index page design*/
 .main-menu{
 	font-size: 16px;
-	border-top: 3px solid green;
+	border-top: 3px solid #1abc9c;
 	margin-bottom: 0px;
 }
 .main-menu i{
-	color: green;
+	color: #ecf0f1;
 }
 .dropdown-alerts{
 	width: 310px;
@@ -26,6 +26,9 @@ body{
 }
 .main-menu .dropdown-menu li a{
     white-space: normal;
+}
+.subject_link a{
+	color: #16a085;
 }
 .qs-panel{
 	padding: 8px;
@@ -133,6 +136,17 @@ body{
 	height: 420px;
 }
 
+/*css for message showing*/
+.success{
+	color: green;
+	font-size: 16px;
+	padding: 10px 0;
+}
+.error{
+	color:red;
+	font-size: 16px;
+	padding: 10px 0;
+}
 
 /*exam list design*/
 .examlistpad{
