@@ -171,7 +171,7 @@ Class PostComment{
 		}
 	}
 	public function getSinglePostComment($postId){
-		$sql = "SELECT * FROM tbl_comment WHERE postid='$postId'";
+		$sql = "SELECT * FROM tbl_comment WHERE postid='$postId' ORDER BY id DESC";
 	
 		$result = $this->db->select($sql);
 		if ($result) {

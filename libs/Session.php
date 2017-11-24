@@ -1,6 +1,6 @@
 <?php
 class Session{
-public static function init(){
+	public static function init(){
       session_start();
      }
 
@@ -17,7 +17,6 @@ public static function init(){
 	 }
 	 
  	 public static function checkAdminSession(){
-	 	self::init();
 	 	if (self::get("adminLogin") == false) {
 	 		self::destroy();
 	 		header("Location:login.php");
@@ -25,7 +24,6 @@ public static function init(){
 	 }
 	 
 	 public static function checkAdminLogin(){
-	 	self::init();
 	 	if (self::get("adminLogin") == true) {
 	 		header("Location:index.php");
 	 	}

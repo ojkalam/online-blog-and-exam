@@ -162,7 +162,7 @@ ob_start();
                    <?php
                 if(isset($_GET['action']) && $_GET['action']=="logout"){
                         Session::destroy();
-                        header("Location: index.php");
+                        header("Location: login.php");
                     }
                 ?>
                   <li class="dropdown">
