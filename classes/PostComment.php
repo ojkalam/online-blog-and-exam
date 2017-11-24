@@ -19,6 +19,11 @@ Class PostComment{
 		$result = $this->db->select($sql);
 		return $result;
 	}
+	public function getSubjectById($id){
+		$sql = "SELECT * FROM tbl_subject WHERE id='$id'";
+		$result = $this->db->select($sql);
+		return $result;
+	}
 
 	//create post
 	public function createPost($data, $file, $user_id){
@@ -28,7 +33,7 @@ Class PostComment{
 		$sub_id = $this->fm->validation($data['subject']);
 		$sub_id = mysqli_real_escape_string($this->db->link, $sub_id);
 
-		$description = $this->fm->validation($data['description']);
+		$description = $data['description'];
 		$description = mysqli_real_escape_string($this->db->link, $description);
 
 		//take image information using super global variable $_FILES[];
@@ -40,7 +45,7 @@ Class PostComment{
 		
 		if (empty($title) or empty($description) or empty($sub_id))
 		{
-			$msg = "<span class='error'>Fields must not be empty !</span>";
+			$msg = "<span class='error'>Fields must not be empty! Please try again.</span>";
 			return $msg;
 		}else{
 
@@ -91,7 +96,7 @@ Class PostComment{
 
 								
 	//get all post
-	public function getAllPost(){
+	public function getAllPost($start_from, $per_page){
 		
 		$sql = "SELECT tbl_post.*, tbl_student.username,tbl_subject.name
 				FROM tbl_post
@@ -99,7 +104,7 @@ Class PostComment{
 				ON tbl_post.user_id = tbl_student.id
 				INNER JOIN tbl_subject
 				ON tbl_post.sub_id = tbl_subject.id
-				ORDER BY tbl_post.id DESC ";
+				ORDER BY tbl_post.id DESC limit $start_from, $per_page";
 	
 		$result = $this->db->select($sql);
 		if ($result) {
@@ -107,6 +112,72 @@ Class PostComment{
 		}else{
 			$msg = "<span class='error'>No Posts found !.</span>";
 			return $msg;
+		}
+	}
+	public function getTotalPostRows(){
+		$sql = "SELECT * FROM tbl_post ORDER BY id DESC";
+	
+		$result = $this->db->select($sql);
+		return $result;
+	}
+
+	//get single post by id
+	public function getSinglePost($postId){
+
+		$sql = "SELECT tbl_post.*, tbl_student.username,tbl_subject.name
+				FROM tbl_post
+				INNER JOIN tbl_student
+				ON tbl_post.user_id = tbl_student.id
+				INNER JOIN tbl_subject
+				ON tbl_post.sub_id = tbl_subject.id
+				WHERE tbl_post.id='$postId'";
+	
+		$result = $this->db->select($sql);
+		if ($result) {
+			return $result;
+		}else{
+			return false;
+		}
+	}
+	//get subject wise posts
+	public function subjectWisePost($subid){
+		
+		$sql = "SELECT tbl_post.*, tbl_student.username,tbl_subject.name
+				FROM tbl_post
+				INNER JOIN tbl_student
+				ON tbl_post.user_id = tbl_student.id
+				INNER JOIN tbl_subject
+				ON tbl_post.sub_id = tbl_subject.id
+				WHERE tbl_post.sub_id='$subid'";
+	
+		$result = $this->db->select($sql);
+		if ($result) {
+			return $result;
+		}else{
+			return false;
+		}		
+	}
+
+	//create comment on posts
+	public function commentPost($data,$postid, $username){
+		$comment = $this->fm->validation($data['comment']);
+		$comment = mysqli_real_escape_string($this->db->link, $comment);
+		$query = "INSERT INTO tbl_comment(comment,postid,username) VALUES('$comment','$postid','$username')";
+		$inserted = $this->db->insert($query);
+		if ($inserted) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function getSinglePostComment($postId){
+		$sql = "SELECT * FROM tbl_comment WHERE postid='$postId'";
+	
+		$result = $this->db->select($sql);
+		if ($result) {
+			return $result;
+		}else{
+			return false;
 		}
 	}
 

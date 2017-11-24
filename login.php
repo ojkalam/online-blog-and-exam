@@ -3,7 +3,7 @@ ob_start();
 
   include "/libs/session.php";
   Session::init();
-  //Session::checkLogin();
+  Session::checkLogin();
 
   $filepath = realpath(dirname(__FILE__));
   include_once ($filepath."/libs/Database.php");

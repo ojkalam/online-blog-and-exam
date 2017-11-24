@@ -38,6 +38,7 @@ Class User{
 					$value = $result->fetch_assoc();
 					Session::set("login",true);
 					Session::set("checkusertype",true);
+					Session::set("username",$uname);
 					Session::set("userid",$value['id']);
 					Session::set("name",$value['name']);
 					header("Location: index.php");

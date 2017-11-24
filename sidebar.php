@@ -3,16 +3,10 @@
       <div class="col-md-12">
       <table class="tabBlock">
             <tr><td class="clock" id="dc"></td>  <!-- THE DIGITAL CLOCK. -->
-                <td style="border-right:2px solid #ddd;padding-right:15px">
-                    <table cellpadding="0" cellspacing="0" border="0"> 
-                        <!-- HOUR IN 'AM' AND 'PM'. -->
-                        <tr><td class="clocklg" id="dc_hour"></td></tr>
-    
-                        <!-- SHOWING SECONDS. -->
-                        <tr><td class="clocklg" id="dc_second"></td></tr>
-                    </table>
+                <td style="padding-right:15px">
+                    
                 </td>
-                <td style="font-size:20px;padding-left:10px;"><?php echo date('d-M-Y');?></td>
+                <td style="font-size:20px;padding-left:10px;"><?php echo date('d M Y');?></td>
             </tr>
     </table>
     </div>
@@ -25,13 +19,28 @@
           <?php
               $subs = $pc->getSubject();
               if (isset($subs)) {
-                while ($row = $subs->fetch_assoc()) {
+
+              //count all posts
+              $allpost = $pc->getTotalPostRows();
+              $allpost = $allpost->num_rows;
           ?>
-                  <a href="#" class="list-group-item"><?php echo $row['name'];?></a>
+                <a href="index.php" class="list-group-item">All Posts (<?php echo "<span style='color:#8e44ad'>".$allpost;?> posts</span>)</a>
+          <?php
+                while ($row = $subs->fetch_assoc()) {
+                  //count subject wise posts
+                  $indSubpost = $pc->subjectWisePost($row['id']);
+                  if ($indSubpost) {
+                    $countIndSubPost = $indSubpost->num_rows;
+                  }else{
+                    $countIndSubPost = 0;
+                  }
+                  
+          ?>
+              <a href="index.php?subid=<?php echo $row['id'];?>" class="list-group-item"><?php echo $row['name'];?> (<?php echo "<span style='color:#8e44ad'>".$countIndSubPost;?> posts</span>)</a>
             <?php
                 }
               }else{
-                echo "nothing found";
+                echo "No subject found";
               }
           ?>
            

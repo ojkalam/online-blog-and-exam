@@ -129,11 +129,16 @@ body{
 	padding-bottom: 30px;
 }
 .post_img{
-	padding: 10px;
+	padding: 20px;
 }
 .post_img img{
-	width: 550px;
-	height: 420px;
+	width: 450px;
+	height: 320px;
+	margin: 0 auto;
+}
+/*Comment design*/
+.commentdesign{
+	margin: 20px 0px;
 }
 
 /*css for message showing*/

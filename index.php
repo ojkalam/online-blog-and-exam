@@ -23,22 +23,56 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
            </ul>
 
            <?php
-            // $per_page = 10;
-            // if (isset($_GET['page'])) {
-            //   $page= $_GET['page'];
-            // }else{
-            //   $page = 1;
-            // }
-            // $start_from = ($page-1)*$per_page;
+            $per_page = 5;
+            if (isset($_GET['page'])) {
+              $page= $_GET['page'];
+            }else{
+              $page = 1;
+            }
+            $start_from = ($page-1)*$per_page;
           
            ?>
 
            <div class="tab-content">
                <div class="tab-pane fade in active" id="section1">
                    <div class="qs_list">
+               <!-- subject wise post view -->
+                   <?php
+                      if (isset($_GET['subid'])) {
+                        $subid= $_GET['subid'];
+                    ?>
+                       <ul class="list-group">
+                    <?php
+                      //get sucject name
+                         $subrows = $pc->getSubjectById($subid);
+                         $result = $subrows->fetch_assoc();
+                         $subname = $result['name'];
+                    //get subject wise posts
+                        $subpost = $pc->subjectWisePost($subid);
+                        if ($subpost) {
+                          $countSub = $subpost->num_rows;
+                          echo "<h4 style='text-align:center;color:green'>$countSub Posts found on subject <strong>$subname</strong></h4>";
+                          while ($row = $subpost->fetch_assoc()) {
+                    ?>
+                              <li class="list-group-item">
+                                <a href="singlepost.php?pid=<?php echo $row['id'];?>"><?php echo $row['title'];?></a>
+                                <span class="badge">10 answers</span><br><span class="postedby">posted by <?php echo $row['username'];?> on <?php echo $fm->formatdate($row['pdate']);?> | subject: <a href="#"><?php echo $row['name'];?></a></span>
+                              </li>
+
+                    <?php     
+                          }
+                        }else{
+                            echo "<span class='error' style='font-size:20px;text-align:center'>No post found !</span>";
+                        }
+                    ?>
+                 </ul>
+
+                <?php
+                    }else{
+                 ?>
                  <ul class="list-group">
                   <?php
-                      $allpost = $pc->getAllPost();
+                      $allpost = $pc->getAllPost($start_from, $per_page);
                       if (count($allpost)>0) {
                         while ($row = $allpost->fetch_assoc()) {
                   ?>
@@ -57,37 +91,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     
                    
                </ul>
+            <?php } ?>
+              
              </div>
              <div class="obls_page">
+            <?php
+              if (!isset($_GET['subid'])) {
+                
+            ?>
                <ul class="pagination">
-
-
                 <!--Pagination start-->
-      <?php 
-        // $total_row = $allpost->num_rows;
-        // $total_pages = ceil($total_row/$per_page);
-      ?>
-      <?php 
-      // echo "<span class='pagination'><a href='index.php?page=1'>".'First Page'."</a>";
+               <?php 
 
-      // for ($i=1; $i <$total_pages ; $i++) { 
-      //   echo "<a href='index.php?page=".$i."'>".$i."</a>";
-      // }
-      // echo "<a href='index.php?page=$total_pages'>".'Last Page'."</a></span>";
+                  $postrows = $pc->getTotalPostRows();
+                  $total_row = $postrows->num_rows;
+                  $total_pages = ceil($total_row/$per_page);
+                ?>
+                <?php 
+                echo "<li><a href='index.php?page=1'>&lt;&lt; First Page</a></li>";
 
-       ?>
-      <!--pagination ends-->
+                for ($i=2; $i <$total_pages ; $i++) { 
 
+                    echo "<li><a href='index.php?page=".$i."'>".$i."</a></li>";
+                  
+                }
+                 
+               echo "<li><a href='index.php?page=$total_pages'>Last page &gt;&gt;</a></li>";
 
-
-                <li><a href="#">&lt;&lt; prev</a></li>
-                <li><a href="#">1</a></li>
-                <li class="active"><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">next &gt;&gt;</a></li>
-              </ul>
-             </div>
+               ?>
+            <!--pagination ends-->  
+               </ul>
+            <?php } ?>
+         </div>
          </div>
                <div class="tab-pane fade" id="section2">
                    <form action="" method="post" role="form" enctype="multipart/form-data">
@@ -103,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                           <div class="col-md-8">
                             <div class="form-group col-md-5">
                                 <select name="subject" class="form-control pull-left input-sm">
-                                  <option selected="selected">Select Subject</option>
+                                  <option value="0">Select Subject</option>
                                   <?php
                                     $subs = $pc->getSubject();
                                     if (isset($subs)) {

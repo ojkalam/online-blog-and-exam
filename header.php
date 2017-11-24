@@ -54,10 +54,10 @@ ob_start();
     <script src="assets/js/bootstrap.min.js"></script>
     <!-- tinymce script -->
     <script src="assets/js/tinymce/tinymce.min.js"></script>
-    <script>
-    tinymce.init({
-      selector: '#writepost'
-    });
+    <script type="text/javascript">
+      tinymce.init({
+        selector: '#writepost'
+      });
     </script>
     <!-- Custom JavaScript -->
     <script src="assets/js/obls.js"></script>
@@ -70,7 +70,7 @@ ob_start();
     <![endif]-->
 
 </head>
-<body onload="digitized();">
+<body>
         <!-- Navigation -->
     <header class="header_area">
         <nav class="navbar navbar-default navbar-inverse navbar-fixed-top main-menu">
@@ -159,6 +159,12 @@ ob_start();
                       <!-- /.dropdown-messages -->
                   </li>
                   <!-- /.dropdown -->
+                   <?php
+                if(isset($_GET['action']) && $_GET['action']=="logout"){
+                        Session::destroy();
+                        header("Location: index.php");
+                    }
+                ?>
                   <li class="dropdown">
                       <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                           <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -169,7 +175,7 @@ ob_start();
                           <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                           </li>
                           <li class="divider"></li>
-                          <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                          <li><a href="?action=logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                           </li>
                       </ul>
                       <!-- /.dropdown-user -->
