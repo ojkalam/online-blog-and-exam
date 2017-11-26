@@ -23,15 +23,15 @@ include_once "header.php";
             <div class="col-md-12" style="padding:20px;">
               <?php 
             //delete exam 
-              if (isset($_GET['delex'])){
-                  $delid = $_GET['delex'] ;
-                  $delete = $ex->daleteExam($delid);
-                    if ($delete) {
-                      echo "<p class='success'>Exam successfully deleted  !</p>";
-                    }else{
-                         echo "<p class='error'>Not deleted  !</p>";
-                    }
-                }
+              // if (isset($_GET['delex'])){
+              //     $delid = $_GET['delex'] ;
+              //     $delete = $ex->daleteExam($delid);
+              //       if ($delete) {
+              //         echo "<p class='success'>Exam successfully deleted  !</p>";
+              //       }else{
+              //            echo "<p class='error'>Not deleted  !</p>";
+              //       }
+              //   }
             ?>
                 <table class="table table-hover exlisttable" style="background:#fff">
                     <thead>
@@ -49,7 +49,8 @@ include_once "header.php";
                     <?php 
                     $i=0;
                     $getex= $ex->getAllExam();
-                    
+                    if ($getex) {
+                      
                     while ($row = $getex->fetch_assoc()) {
                       $i++;
                       $gettotal = $ex->getQuestionByExam($row['id']);
@@ -74,7 +75,7 @@ include_once "header.php";
                                 }else{
                               ?>
                               
-                              <a href="?delex=<?php echo $row['id'];?>" class="btn btn-danger">Delete</a>
+                              <!-- <a href="?delex=<?php //echo $row['id'];?>" class="btn btn-danger">Delete</a> -->
                               <a href="questionlist.php?viewex=<?php echo $row['id'];?>" class="btn btn-info">View</a>
                               <?php } ?>
                             </div>
@@ -82,6 +83,9 @@ include_once "header.php";
                       </tr>
                     <?php
                       }
+                    }else{
+                      echo '<tr><td class="error" colspan="5">nothing found !</td></tr>';
+                    }
                     ?>
                      
                     </tbody>

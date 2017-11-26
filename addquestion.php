@@ -24,8 +24,7 @@ include_once "header.php";
             </div>
             <div class="col-md-6 text-right examlistpad">
                 <div class="">
-                  <a href="#" class="btn btn-primary">Subjects</a>
-                  <a href="#" class="btn btn-info">Exam List</a>
+                  <a href="examlist.php" class="btn btn-info">Exam List</a>
                 </div>
             </div>
         </div>

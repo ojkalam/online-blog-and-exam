@@ -11,7 +11,7 @@ include_once "header.php";
             </div>
             <div class="col-md-6 text-right examlistpad">
                 <div class="">
-                  <a href="createexam.php" class="btn btn-primary">Show Exams</a>
+                  <a href="examlist.php" class="btn btn-primary">Show Exams</a>
                 </div>
             </div>
         </div>

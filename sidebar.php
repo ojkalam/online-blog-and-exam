@@ -25,14 +25,21 @@
         </div>
         <div class="list-group subject_link">
           <?php
+
               $subs = $pc->getSubject();
               if (isset($subs)) {
 
+              //get user toal posts only
+              $userposts = $pc->userTotalPost();
               //count all posts
               $allpost = $pc->getTotalPostRows();
               $allpost = $allpost->num_rows;
           ?>
-                <a style='color:#c0392b' href="index.php?uid=<?php echo Session::get("userid");?>" class="list-group-item">Only My Posts (<?php echo "<span style='color:#8e44ad'>".$allpost;?> posts</span>)</a>
+                <?php
+                 if (Session::get("checkusertype")) {  
+                ?>
+                <a style='color:#c0392b' href="index.php?usid=<?php echo Session::get("userid");?>" class="list-group-item">Only My Posts (<?php echo "<span style='color:#8e44ad'>".$userposts;?> posts</span>)</a>
+                <?php } ?>
                 <a href="index.php" class="list-group-item">All Posts (<?php echo "<span style='color:#8e44ad'>".$allpost;?> posts</span>)</a>
           <?php
                 while ($row = $subs->fetch_assoc()) {

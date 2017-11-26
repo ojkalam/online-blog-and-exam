@@ -4,6 +4,12 @@ include_once "header.php";
 //get user id 
  $user_id = Session::get("userid");
 
+if (isset($_GET['delp'])) {
+  $delp = $_GET['delp'];
+  $deletedp = $pc->deleteUserPost($delp, $user_id);
+}
+
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $posted = $pc->createPost($_POST, $_FILES, $user_id);
     }
@@ -15,6 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <?php 
                 if (isset($posted)) {
                   echo $posted;
+                }
+            ?>
+            <?php 
+                if (isset($deletedp)) {
+                  echo "<span class='error'>Post deleted successfully !</span>";
+                  header("Location:index.php?usid=".$user_id);
                 }
             ?>
             <ul class="nav nav-pills">
@@ -57,13 +69,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                           $countSub = $subpost->num_rows;
                           echo "<h4 style='text-align:center;color:green'>$countSub Posts found on subject <strong>$subname</strong></h4>";
                           while ($row = $subpost->fetch_assoc()) {
+                            $getcomment = $pc->getSinglePostComment($row['id']);
+                          if($getcomment){
+                            $countc = $getcomment->num_rows;
+                          }else{
+                            $countc = 0;
+                          }
                     ?>
                               <li class="list-group-item">
                                 <a href="singlepost.php?pid=<?php echo $row['id'];?>"><?php echo $row['title'];?></a>
-                                <span class="badge">10 answers</span><br><span class="postedby">posted by <?php echo $row['username'];?> on <?php echo $fm->formatdate($row['pdate']);?> | subject: <a href="#"><?php echo $row['name'];?></a></span>
+                                <span class="badge"><?php echo $countc;?> answers</span><br><span class="postedby">posted by <?php echo $row['username'];?> on <?php echo $fm->formatdate($row['pdate']);?> | subject: <a href="#"><?php echo $row['name'];?></a></span>
                               </li>
 
-                    <?php     
+                    <?php    
+                        $countc = 0; 
                           }
                         }else{
                             echo "<span class='error' style='font-size:20px;text-align:center'>No post found !</span>";
@@ -72,8 +91,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                  </ul>
 
                 <?php
-                    }else if(isset($_GET['uid'])) {
-                        $uid= $_GET['uid'];
+                    }else if(isset($_GET['usid'])) {
+                        $uid= $_GET['usid'];
                 ?>
               <!-- view individual posts -->
                  <ul class="list-group">
@@ -85,14 +104,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                           $countpost = $upost->num_rows;
                           echo "<h4 style='text-align:center;color:green'>$countpost Posts found of user: <strong>$uname</strong></h4>";
                           while ($row = $upost->fetch_assoc()) {
+                              $getcomment = $pc->getSinglePostComment($row['id']);
+                          if($getcomment){
+                            $countc = $getcomment->num_rows;
+                          }else{
+                            $countc = 0;
+                          }
                     ?>
                               <li class="list-group-item">
                                 <a href="singlepost.php?pid=<?php echo $row['id'];?>"><?php echo $row['title'];?></a>
-                                <span class="badge">10 answers</span><br><span class="postedby">posted by <?php echo $row['username'];?> on <?php echo $fm->formatdate($row['pdate']);?> | subject: <a href="#"><?php echo $row['name'];?></a></span>
+                                <span class="badge"><?php echo $countc;?> answers</span><br><span class="postedby">posted by <?php echo $row['username'];?> on <?php echo $fm->formatdate($row['pdate']);?> | subject: <a href="#"><?php echo $row['name'];?></a></span>
+                                <br><a class="btn btn-danger btn-sm" href="?delp=<?php echo $row['id'];?>">Delete post</a>
                               </li>
 
-                    <?php     
+                    <?php   
+                           $countc = 0;   
                           }
+                         
                         }else{
                             echo "<span class='error' style='font-size:20px;text-align:center'>No post found !</span>";
                         }
@@ -113,14 +141,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                           $countpost = $spost->num_rows;
                           echo "<h4 style='text-align:center;color:green'>$countpost result found !</h4>";
                           while ($row = $spost->fetch_assoc()) {
+                            $getcomment = $pc->getSinglePostComment($row['id']);
+                          if($getcomment){
+                            $countc = $getcomment->num_rows;
+                          }else{
+                            $countc = 0;
+                          }
+
                     ?>
                               <li class="list-group-item">
                                 <a href="singlepost.php?pid=<?php echo $row['id'];?>"><?php echo $row['title'];?></a>
-                                <span class="badge">10 answers</span><br><span class="postedby">posted by <?php echo $row['username'];?> on <?php echo $fm->formatdate($row['pdate']);?> | subject: <a href="#"><?php echo $row['name'];?></a></span>
+                                <span class="badge"><?php echo $countc;?> answers</span><br><span class="postedby">posted by <?php echo $row['username'];?> on <?php echo $fm->formatdate($row['pdate']);?> | subject: <a href="#"><?php echo $row['name'];?></a></span>
                               </li>
 
-                    <?php     
+                    <?php 
+                          $countc = 0;    
                           }
+
                         }else{
                             echo "<span class='error' style='font-size:20px;text-align:center'>No post found !</span>";
                         }
@@ -139,6 +176,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                           $getcomment = $pc->getSinglePostComment($row['id']);
                           if($getcomment){
                             $countc = $getcomment->num_rows;
+                          }else{
+                            $countc = 0;
                           }
 
                   ?>  

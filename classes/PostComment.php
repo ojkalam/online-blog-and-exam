@@ -121,6 +121,15 @@ Class PostComment{
 		return $result;
 	}
 
+	//count users posts total
+	public function userTotalPost(){
+		$userid = Session::get("userid");
+		$sql = "SELECT * FROM tbl_post WHERE user_id='$userid'";
+		$result = $this->db->select($sql);
+		$count = $result->num_rows;
+		return $count;
+	}
+
 	//get single post by id
 	public function getSinglePost($postId){
 
@@ -209,6 +218,18 @@ Class PostComment{
 				WHERE tbl_post.title LIKE '%$search%' or tbl_post.description LIKE '%$search%' or tbl_post.pdate LIKE '%search%' ";
 		$post = $this->db->select($sql);
 		return $post;
+	}
+	//delete individual posts
+	public function deleteUserPost($delp, $user_id){
+		$delquery = "DELETE FROM tbl_post WHERE id='$delp' AND user_id='$user_id'";
+			$deldata = $this->db->delete($delquery);
+		
+			if ($deldata) {
+			return true;
+
+			}else{
+				return false;
+			}
 	}
 
 

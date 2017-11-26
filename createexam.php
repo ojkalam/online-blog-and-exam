@@ -1,6 +1,9 @@
 <?php
 include_once "header.php";
 
+if (Session::get("checkusertype")) {
+    header("Location: examlist.php");
+}
 ?>
 
 <section id="examlist">

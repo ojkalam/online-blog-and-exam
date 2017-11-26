@@ -42,10 +42,10 @@ Class Exam{
 			$quesNo = mysqli_real_escape_string($this->db->link, $data['quesNo']);
 			$ques   = mysqli_real_escape_string($this->db->link, $data['ques']);
 			$ans    = array();
-			$ans[1] = $data['ans1'];
-			$ans[2] = $data['ans2'];
-			$ans[3] = $data['ans3'];
-			$ans[4] = $data['ans4'];
+			$ans[1] = $this->fm->validation($data['ans1']);
+			$ans[2] = $this->fm->validation($data['ans2']);
+			$ans[3] = $this->fm->validation($data['ans3']);
+			$ans[4] = $this->fm->validation($data['ans4']);
 			$rightAns = $data['rightAns'];
 			$query ="INSERT INTO tbl_ques(quesNo, ques, examid) VALUES('$quesNo','$ques','$examid')";
 			$insert_row = $this->db->insert($query);
@@ -217,6 +217,7 @@ Class Exam{
 			$query = "INSERT INTO tbl_result(exname,exid,userid,score) VALUES('$exname','$examid','$userid','$score')";
 			$inserted = $this->db->insert($query);
 			if ($inserted) {
+				Session::set("lastexam",$examid);
 			header("Location: endtestpage.php?exid=".$examid."&&tqs=".$totalqs);
 			}
 		}else{
@@ -235,6 +236,14 @@ Class Exam{
 	//get exam by user id 
 	public function getResultByUser($userid){
 		$query = "SELECT * FROM tbl_result WHERE userid='$userid'";
+		$getData = $this->db->select($query);
+		return $getData;
+	}
+	//get report 
+	public function getTestResult($score, $lsex){
+		$userid = Session::get("userid");
+		$query = "SELECT * FROM tbl_result WHERE exid='$lsex' AND score='$score' AND userid='$userid' ORDER BY id DESC LIMIT 1;
+		";
 		$getData = $this->db->select($query);
 		return $getData;
 	}

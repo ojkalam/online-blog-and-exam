@@ -15,7 +15,7 @@ if (isset($_GET['exid']) && isset($_GET['qs'])) {
 	//process answer
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			$process = $ex->processAnswer($_POST,$exid);
-		}
+	}
 ?>
 <section class="giveexam">
 	<div class="container obls_border obls_margin">
@@ -34,7 +34,7 @@ if (isset($_GET['exid']) && isset($_GET['qs'])) {
             </div>
         </div>
 		<div class="row"> 
-			<?php echo "total $totalqs adn qsno $qsno";?>
+
 			<div class="col-md-8 col-md-offset-2"  id="postdetails">
 				<h1 class="text-center">Question <?php echo $qsno; ?> of <?php echo $totalqs; ?></h1>
 

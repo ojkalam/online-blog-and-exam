@@ -18,7 +18,7 @@ $score = "";
 			<?php
 				if (isset($_SESSION['score'])) {
 					$score =  $_SESSION['score'];
-					unset($_SESSION['score']);
+					//unset($_SESSION['score']);
 				}
 			?>
 			<h2><strong>Congrats !</strong> You have successfully done the test</h2>
@@ -31,7 +31,8 @@ $score = "";
 			<h3 class="success">Correct Answer: <?php echo $score?></h3>
 			<h3 class="error">Wrong Answer: <?php echo $totalqs-$score?></h3>
 			<h3 style="color:#2980b9">Total Score: <?php echo $score; ?></h3>
-			<button class="btn btn-primary">Back to Exam List</button>
+			<a  class="btn btn-info" href="resultreport.php" target="_blank" >Generate Result Report</a>
+			<a class="btn btn-primary" href="examlist.php">Back to Exam List</a>
 			</div>
 
 		</div>
