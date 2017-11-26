@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2017 at 01:55 AM
+-- Generation Time: Nov 26, 2017 at 02:55 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -58,14 +58,26 @@ CREATE TABLE `tbl_ans` (
 --
 
 INSERT INTO `tbl_ans` (`id`, `quesNo`, `rightAns`, `ans`) VALUES
-(73, 1, 0, 'one'),
-(74, 1, 0, 'tow'),
-(75, 1, 0, 'three'),
-(76, 1, 1, 'four'),
-(77, 2, 0, 'sdf'),
-(78, 2, 0, 'sdf'),
-(79, 2, 1, 'asdf'),
-(80, 2, 0, 'wer');
+(129, 1, 1, 'dummy text'),
+(130, 1, 0, 'another'),
+(131, 1, 0, 'dsfsd'),
+(132, 1, 0, 'sdfdsf'),
+(133, 2, 0, 'we'),
+(134, 2, 0, 'they'),
+(135, 2, 0, 'all'),
+(136, 2, 1, 'web developer'),
+(137, 3, 0, 'easy'),
+(138, 3, 0, 'learn'),
+(139, 3, 1, 'both'),
+(140, 3, 0, 'hard'),
+(141, 1, 1, 'water'),
+(142, 1, 0, 'soil'),
+(143, 1, 0, 'gold'),
+(144, 1, 0, 'air'),
+(145, 2, 1, 'we'),
+(146, 2, 0, 'dfs'),
+(147, 2, 0, 'df'),
+(148, 2, 0, 'sdfdsf');
 
 -- --------------------------------------------------------
 
@@ -93,7 +105,12 @@ INSERT INTO `tbl_comment` (`id`, `comment`, `postid`, `username`) VALUES
 (6, 'I am tipu', 32, 'tipu'),
 (7, 'Hi hello', 29, 'fkarim'),
 (8, 'another show', 29, 'fkarim'),
-(9, 'threee', 29, 'fkarim');
+(9, 'threee', 29, 'fkarim'),
+(10, 'dsfs ddfs', 29, 'tipu'),
+(11, 'sdfsd', 33, 'tipu'),
+(12, 'dsfsdf', 27, 'tipu'),
+(13, 'ada asd', 33, 'tipu'),
+(14, 'aa dasd dasd', 34, 'tipu');
 
 -- --------------------------------------------------------
 
@@ -114,10 +131,8 @@ CREATE TABLE `tbl_exam` (
 --
 
 INSERT INTO `tbl_exam` (`id`, `name`, `subject`, `author`, `edate`) VALUES
-(6, 'My Exam', '0', 'tipu', '2017-11-25 06:40:18'),
-(8, 'Iubat', 'Physics', 'tipu', '2017-11-25 17:27:39'),
-(9, 'Hello exam', 'ICT', 'tipu', '2017-11-25 17:30:55'),
-(10, '1st term', 'Physics', 'tipu', '2017-11-25 20:37:35');
+(15, 'Quiz test 1', 'ICT', 'fkarim', '2017-11-26 13:41:11'),
+(16, 'Western Exam 1', 'Chemistry', 'fkarim', '2017-11-26 13:48:47');
 
 -- --------------------------------------------------------
 
@@ -142,8 +157,9 @@ CREATE TABLE `tbl_post` (
 INSERT INTO `tbl_post` (`id`, `title`, `description`, `user_id`, `sub_id`, `pdate`, `image`) VALUES
 (27, 'This is my first title', 'Description about me Description about me\r\nDescription about me Description about me\r\nDescription about me Description about me', 1, 1, '2017-11-23 21:04:13', 'uploads/6f6122744f.jpg'),
 (29, 'à¦•à§‹à¦¨ à¦ªà¦¤à§à¦°à¦¿à¦•à¦¾à§Ÿ à¦•à¦¬à¦¿à¦¤à¦¾ à¦ªà§à¦°à¦•à¦¾à¦¶à§‡à¦° à¦®à¦¾à¦§à§à¦¯à¦®à§‡ à¦¬à¦™à§à¦•à¦¿à¦®à¦šà¦¨à§à¦¦à§à¦° à¦šà¦Ÿà§à¦°à§‹à¦ªà¦¾à¦§à§à¦¯à¦¾à§Ÿà§‡à¦° à¦¸à¦¾à¦¹à¦¿à¦¤à§à¦¯ à¦œà§€à¦¬à¦¨à§‡à¦° à¦¸à§‚à¦šà¦¨à¦¾ à¦˜à¦Ÿà§‡?', '<ul class=\"wpProQuiz_questionList\" style=\"box-sizing: inherit; padding: 0px; margin: 0px 0px 1.5em 2em; font-variant-numeric: inherit; font-stretch: inherit; font-size: 13px; line-height: inherit; font-family: \'Helvetica Neue\', HelveticaNeue, Helvetica, Arial, \'Lucida Grande\', sans-serif; vertical-align: baseline; overflow: auto; color: #555555; list-style: none !important; border: 1px solid #d5d5d5 !important; background: #f7f7f7 !important;\" data-question_id=\"3577\" data-type=\"single\">\r\n<li class=\"wpProQuiz_questionListItem\" style=\"box-sizing: inherit; padding: 3px !important; border: 0px !important; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; background-image: none !important; list-style: none !important; margin: 0px 0px 5px !important 0px !important;\" data-pos=\"0\"><label style=\"box-sizing: inherit; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; display: inline; margin: 0px !important;\">à¦¬à¦™à§à¦—à¦¦à¦°à§à¦¶à¦¨</label></li>\r\n<li class=\"wpProQuiz_questionListItem\" style=\"box-sizing: inherit; padding: 3px !important; border: 0px !important; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; background-image: none !important; list-style: none !important; margin: 0px 0px 5px !important 0px !important;\" data-pos=\"1\"><label style=\"box-sizing: inherit; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; display: inline; margin: 0px !important;\"><input class=\"wpProQuiz_questionInput\" style=\"color: #707070; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: 1rem; line-height: 1.5; font-family: SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif; padding: 0px; margin-top: 0px !important; margin-right: 0px !important; margin-left: 0px !important; display: inline !important; float: none !important;\" name=\"question_303_3577\" type=\"radio\" value=\"2\" />&nbsp;à¦¸à¦‚à¦¬à¦¾à¦¦ à¦ªà§à¦°à¦­à¦¾à¦•à¦°</label></li>\r\n<li class=\"wpProQuiz_questionListItem\" style=\"box-sizing: inherit; padding: 3px !important; border: 0px !important; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; background-image: none !important; list-style: none !important; margin: 0px 0px 5px !important 0px !important;\" data-pos=\"2\"><label style=\"box-sizing: inherit; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; display: inline; margin: 0px !important;\"><input class=\"wpProQuiz_questionInput\" style=\"color: #707070; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: 1rem; line-height: 1.5; font-family: SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif; padding: 0px; margin-top: 0px !important; margin-right: 0px !important; margin-left: 0px !important; display: inline !important; float: none !important;\" name=\"question_303_3577\" type=\"radio\" value=\"3\" />&nbsp;à¦¤à¦¤à§à¦¤à§à¦¬à¦¬à§‹à¦§à¦¿à¦¨à§€</label></li>\r\n<li class=\"wpProQuiz_questionListItem\" style=\"box-sizing: inherit; padding: 3px !important; border: 0px !important; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; background-image: none !important; list-style: none !important; overflow: auto; margin: 0px 0px 0px !important 0px !important;\" data-pos=\"3\"><label style=\"box-sizing: inherit; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; display: inline; margin: 0px !important;\"><input class=\"wpProQuiz_questionInput\" style=\"color: #707070; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: 1rem; line-height: 1.5; font-family: SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif; padding: 0px; margin-top: 0px !important; margin-right: 0px !important; margin-left: 0px !important; display: inline !important; float: none !important;\" name=\"question_303_3577\" type=\"radio\" value=\"4\" />&nbsp;à¦¸à¦‚à¦¬à¦¾à¦¦ à¦•à§Œà¦®à§à¦¦à§€</label></li>\r\n</ul>', 1, 1, '2017-11-23 21:12:19', ''),
-(31, 'Ict post no one', '<p>Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet Lorem ipsum dolar emet&nbsp;</p>', 1, 6, '2017-11-23 22:35:02', 'uploads/00cc9f04d7.jpg'),
-(32, 'Post from another account', '<p>Post from another accountPost from another accountPost from another accountPost from another accountPost from another accountPost from another accountPost from another accountPost from another accountPost from another accountPost from another accountPost from another accountPost from another accountPost from another account</p>', 2, 3, '2017-11-24 10:15:17', 'uploads/e471edaf95.jpg');
+(32, 'Post from another account', '<p>Post from another accountPost from another accountPost from another accountPost from another accountPost from another accountPost from another accountPost from another accountPost from another accountPost from another accountPost from another accountPost from another accountPost from another accountPost from another account</p>', 2, 3, '2017-11-24 10:15:17', 'uploads/e471edaf95.jpg'),
+(33, 'Whah is HTML', '<p>Hyper text markup lang</p>', 1, 6, '2017-11-26 13:46:39', 'uploads/532fb7de1b.jpg'),
+(34, 'sdf sdfsdfsd', '<p>fasddf sdf</p>', 1, 6, '2017-11-26 13:47:37', 'uploads/e95fc21dfa.jpg');
 
 -- --------------------------------------------------------
 
@@ -163,8 +179,11 @@ CREATE TABLE `tbl_ques` (
 --
 
 INSERT INTO `tbl_ques` (`id`, `quesNo`, `ques`, `examid`) VALUES
-(19, 1, 'Lorem ipsum ', 10),
-(20, 2, 'Lorem ipsum  sdfsdfsd', 10);
+(33, 1, 'Why do we use it?', 15),
+(34, 2, 'Why do we use it?', 15),
+(35, 3, 'What is the benefit of html', 15),
+(36, 1, 'H2O means ?', 16),
+(37, 2, 'Why do we use it?', 16);
 
 -- --------------------------------------------------------
 
@@ -185,8 +204,7 @@ CREATE TABLE `tbl_result` (
 --
 
 INSERT INTO `tbl_result` (`id`, `exname`, `exid`, `userid`, `score`) VALUES
-(4, '1st term', 10, 1, 0),
-(5, '1st term', 10, 1, 1);
+(21, 'Quiz test 1', 15, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -350,32 +368,32 @@ ALTER TABLE `tbl_admin`
 -- AUTO_INCREMENT for table `tbl_ans`
 --
 ALTER TABLE `tbl_ans`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
 --
 -- AUTO_INCREMENT for table `tbl_comment`
 --
 ALTER TABLE `tbl_comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `tbl_exam`
 --
 ALTER TABLE `tbl_exam`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `tbl_post`
 --
 ALTER TABLE `tbl_post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `tbl_ques`
 --
 ALTER TABLE `tbl_ques`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT for table `tbl_result`
 --
 ALTER TABLE `tbl_result`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `tbl_student`
 --
