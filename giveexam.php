@@ -1,11 +1,31 @@
 <?php
 include_once "header.php";
+
+if (isset($_GET['exid']) && isset($_GET['qs'])) {
+	$exid = $_GET['exid']; 
+	$qsno = $_GET['qs']; 
+}else{
+	header("Location: examlist.php");
+}
+
+	$totalqs = $ex->getQuestionByExam($exid);
+	$ques = $ex->getQuestionSingleQs($exid, $qsno);
+	$question = $ques->fetch_assoc();
+
+	//process answer
+	if($_SERVER['REQUEST_METHOD'] == 'POST'){
+			$process = $ex->processAnswer($_POST,$exid);
+		}
 ?>
 <section class="giveexam">
 	<div class="container obls_border obls_margin">
 		 <div class="row">
             <div class="col-md-6 examlistpad">
-                <span style="font-size:24px;">Exam Name</span>
+            	<?php 
+            		$exname = $ex->getExamById($exid);
+            		$exinfo = $exname->fetch_assoc();
+            	?>
+                <span style="font-size:24px;">Exam Name: <?php echo $exinfo['name'];?></span>
             </div>
             <div class="col-md-6 text-right examlistpad">
                 <div class="">
@@ -14,24 +34,25 @@ include_once "header.php";
             </div>
         </div>
 		<div class="row"> 
+			<?php echo "total $totalqs adn qsno $qsno";?>
 			<div class="col-md-8 col-md-offset-2"  id="postdetails">
-				<h1 class="text-center">Question 1 of 10</h1>
-				<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, ea.?</h2>
+				<h1 class="text-center">Question <?php echo $qsno; ?> of <?php echo $totalqs; ?></h1>
+
+				<h2><?php echo $question['ques']; ?></h2>
 				<form accept-charset="UTF-8" role="form" action="" method="POST">
                     <fieldset>
+                    	<?php 
+                    		$getans = $ex->getAns($qsno);
+                    		while($ans = $getans->fetch_assoc()){
+                    	?>
 			    		<div class="radio">
-						  <label><input type="radio" name="optradio">Option 1</label>
+						  <label><input type="radio" name="answer" value="<?php echo $ans['id'];?>" required><?php echo $ans['ans'];?></label>
 						</div>
-						<div class="radio">
-						  <label><input type="radio" name="optradio">Option 2</label>
-						</div>
-						<div class="radio">
-						  <label><input type="radio" name="optradio">Option 3</label>
-						</div>
-						<div class="radio">
-						  <label><input type="radio" name="optradio">Option 2</label>
-						</div>
-			    		<input class="btn btn-success btn-block" type="submit" value="Next">
+					<?php } ?>
+						<input type="hidden" name="qsno" value="<?php echo $qsno; ?>">
+
+			    		<input class="btn btn-success btn-block" type="submit" value="Next Question">
+
 			    	</fieldset>
 			   </form>
 			</div>

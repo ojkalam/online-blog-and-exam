@@ -16,6 +16,7 @@ ob_start();
   $db = new Database();
   $fm = new Format();
   $pc = new PostComment();
+  $ex = new Exam();
 
 ?>
 
@@ -89,75 +90,23 @@ ob_start();
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                  <li><a href="index.php">Home <span class="sr-only">(current)</span></a></li>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Online Exam <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Create exam</a></li>
-                      <li><a href="#">Exam list</a></li>
-                      <li role="separator" class="divider"></li>
-                      <li><a href="#">Result</a></li>
-                    </ul>
-                  </li>
+
+                  <li><a href="index.php"><i class="fa fa-rss" aria-hidden="true"></i> Student Blog</span></a></li>
+                  <?php 
+                      if(!Session::get("checkusertype")){
+                    ?>
+                  <li><a href="createexam.php"><i class="fa fa-tasks" aria-hidden="true"></i> Create Exam</span></a></li>
+                  <li><a href="examlist.php"><i class="fa fa-bar-chart" aria-hidden="true"></i> Exam Lists</span></a></li>
+                  <?php } ?>
+                   <?php 
+                      if(Session::get("checkusertype")){
+                    ?>
+                  <li><a href="examlist.php"><i class="fa fa-tasks" aria-hidden="true"></i> Online Exam</span></a></li>
+                  <li><a href="result.php"><i class="fa fa-bar-chart" aria-hidden="true"></i> Results</span></a></li>
+                  <?php } ?>
                 </ul>
-                <form class="navbar-form navbar-left" role="search">
-                  <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                  </div>
-                  <button type="submit" class="btn btn-default"><span style="color:green" class="glyphicon glyphicon-search"></button>
-                </form> 
+                
                 <ul class="nav navbar-nav navbar-right">
-                <!-- message -->
-                  <li class="dropdown">
-                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                          <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
-                      </a> 
-                      <ul class="dropdown-menu dropdown-messages">
-                          <li>
-                              <a href="#">
-                                  <div>
-                                      <strong>John Doe</strong>
-                                      <span class="pull-right text-muted">
-                                          <em>Yesterday</em>
-                                      </span>
-                                  </div>
-                                  <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                              </a>
-                          </li>
-                          <li class="divider"></li>
-                          <li>
-                              <a href="#">
-                                  <div>
-                                      <strong>John Doe</strong>
-                                      <span class="pull-right text-muted">
-                                          <em>Yesterday</em>
-                                      </span>
-                                  </div>
-                                  <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                              </a>
-                          </li>
-                          <li class="divider"></li>
-                          <li>
-                              <a href="#">
-                                  <div>
-                                      <strong>John Doe</strong>
-                                      <span class="pull-right text-muted">
-                                          <em>Yesterday</em>
-                                      </span>
-                                  </div>
-                                  <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                              </a>
-                          </li>
-                          <li class="divider"></li>
-                          <li>
-                              <a class="text-center" href="#">
-                                  <strong>Read All Messages</strong>
-                                  <i class="fa fa-angle-right"></i>
-                              </a>
-                          </li>
-                      </ul>
-                      <!-- /.dropdown-messages -->
-                  </li>
                   <!-- /.dropdown -->
                    <?php
                 if(isset($_GET['action']) && $_GET['action']=="logout"){
@@ -166,20 +115,9 @@ ob_start();
                     }
                 ?>
                   <li class="dropdown">
-                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                          <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                      </a>
-                      <ul class="dropdown-menu dropdown-user">
-                          <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                          </li>
-                          <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                          </li>
-                          <li class="divider"></li>
-                          <li><a href="?action=logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                          </li>
-                      </ul>
-                      <!-- /.dropdown-user -->
+                   <a href="#"><i class="fa fa-user fa-fw"></i> <?php echo Session::get('username');?> (<?php echo Session::get("usertype");?>)</a>
                   </li>
+                  <li><a href="?action=logout" class="nav-link"><i class="fa fa-fw fa-sign-out"></i> Logout</a></li>
                   <!-- /.dropdown -->
                 </ul>
                 <!-- End message/user action/taks -->

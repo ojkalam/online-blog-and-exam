@@ -28,6 +28,7 @@ if (isset($_GET['pid'])) {
 	              <div class="card-text"><?php echo $row['description'];?></div>
 	              <?php  } 	?>
 	            </div>
+	            <hr>
 	            <div class="card-footer text-muted">
 	              Posted on <?php echo $fm->formatdate($row['pdate']);?> by
 	              <a href="#"><?php echo $row['username'];?></a>

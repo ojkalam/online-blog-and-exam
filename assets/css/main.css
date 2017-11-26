@@ -158,3 +158,8 @@ body{
 	padding: 30px 15px;
 	border-bottom: 1px solid #ddd;
 }
+.starttest img{
+	width: 300px;
+	height: 60px;
+	border-radius: 10px;
+}

@@ -139,6 +139,23 @@ Class PostComment{
 			return false;
 		}
 	}
+	//get users posts
+	public function userPost($uid){
+		$sql = "SELECT tbl_post.*, tbl_student.username,tbl_subject.name
+				FROM tbl_post
+				INNER JOIN tbl_student
+				ON tbl_post.user_id = tbl_student.id
+				INNER JOIN tbl_subject
+				ON tbl_post.sub_id = tbl_subject.id
+				WHERE tbl_post.user_id='$uid'";
+	
+		$result = $this->db->select($sql);
+		if ($result) {
+			return $result;
+		}else{
+			return false;
+		}		
+	}
 	//get subject wise posts
 	public function subjectWisePost($subid){
 		
@@ -180,7 +197,19 @@ Class PostComment{
 			return false;
 		}
 	}
+	//search post
+	public function searchPost($search){
 
+		$sql = "SELECT tbl_post.*, tbl_student.username,tbl_subject.name
+				FROM tbl_post
+				INNER JOIN tbl_student
+				ON tbl_post.user_id = tbl_student.id
+				INNER JOIN tbl_subject
+				ON tbl_post.sub_id = tbl_subject.id
+				WHERE tbl_post.title LIKE '%$search%' or tbl_post.description LIKE '%$search%' or tbl_post.pdate LIKE '%search%' ";
+		$post = $this->db->select($sql);
+		return $post;
+	}
 
 
 //end of class

@@ -9,88 +9,81 @@ include_once "header.php";
             <div class="col-md-6 examlistpad">
                 <span style="font-size:24px;">Exams</span>
             </div>
+            <?php 
+              if(!Session::get("checkusertype")){
+            ?>
             <div class="col-md-6 text-right examlistpad">
                 <div class="">
-                  <a href="#" class="btn btn-primary">Subjects</a>
-                  <a href="#" class="btn btn-info">Create new Exam</a>
+                  <a href="createexam.php" class="btn btn-primary">Create new Exam</a>
                 </div>
             </div>
+            <?php } ?>
         </div>
         <div class="row" id="postdetails">
             <div class="col-md-12" style="padding:20px;">
-                <table class="table table-hover exlisttable">
+              <?php 
+            //delete exam 
+              if (isset($_GET['delex'])){
+                  $delid = $_GET['delex'] ;
+                  $delete = $ex->daleteExam($delid);
+                    if ($delete) {
+                      echo "<p class='success'>Exam successfully deleted  !</p>";
+                    }else{
+                         echo "<p class='error'>Not deleted  !</p>";
+                    }
+                }
+            ?>
+                <table class="table table-hover exlisttable" style="background:#fff">
                     <thead>
                       <tr>
                         <th>SL</th>
                         <th><i class="fa fa-arrows-v" aria-hidden="true"></i> Date Created</th>
                         <th>Exam title</th>
                         <th>Subject</th>
-                        <th>Questions</th>
+                        <th>Total Questions</th>
                         <th>Created by</th>
                         <th><i class="fa fa-bars" aria-hidden="true"></i> Action</th>
                       </tr>
                     </thead>
                     <tbody>
+                    <?php 
+                    $i=0;
+                    $getex= $ex->getAllExam();
+                    
+                    while ($row = $getex->fetch_assoc()) {
+                      $i++;
+                      $gettotal = $ex->getQuestionByExam($row['id']);
+                      
+                ?>
                       <tr>
-                        <td>1</td>
-                        <td>28-10-2017</td>
-                        <td><strong><a href="#">Quiz Test</a></strong></td>
-                        <td>English</td>
-                        <td>30</td>
-                        <td>Md Abul Kalam</td>
+                        <td><?php echo $i;?></td>
+                        <td><?php echo $fm->formatDate($row['edate']);?></td>
+                        <td><strong><a href="#"><?php echo $row['name'];?></a></strong></td>
+                        <td><?php echo $row['subject'];?></td>
+                        <td><?php echo $gettotal; ?></td>
+                        <td><?php echo $row['author'];?></td>
                         <td>
                             <div class="left_pad">
-                              <a href="#" class="btn btn-primary">View</a>
-                              <a href="#" class="btn btn-info">Edit</a>
-                              <a href="#" class="btn btn-danger">Delete</a>
+                              <?php 
+                                if(Session::get("checkusertype")){
+                              ?>
+
+                              <a href="starttest.php?exid=<?php echo $row['id'];?>" class="btn btn-danger">Start Test</a>
+                              
+                              <?php
+                                }else{
+                              ?>
+                              
+                              <a href="?delex=<?php echo $row['id'];?>" class="btn btn-danger">Delete</a>
+                              <a href="questionlist.php?viewex=<?php echo $row['id'];?>" class="btn btn-info">View</a>
+                              <?php } ?>
                             </div>
                         </td>
                       </tr>
-                      <tr>
-                        <td>1</td>
-                        <td>28-10-2017</td>
-                        <td><strong><a href="#">Quiz Test</a></strong></td>
-                        <td>English</td>
-                        <td>30</td>
-                        <td>Md Abul Kalam</td>
-                        <td>
-                            <div class="left_pad">
-                              <a href="#" class="btn btn-primary">View</a>
-                              <a href="#" class="btn btn-info">Edit</a>
-                              <a href="#" class="btn btn-danger">Delete</a>
-                            </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>1</td>
-                        <td>28-10-2017</td>
-                        <td><strong><a href="#">Quiz Test</a></strong></td>
-                        <td>English</td>
-                        <td>30</td>
-                        <td>Md Abul Kalam</td>
-                        <td>
-                            <div class="left_pad">
-                              <a href="#" class="btn btn-primary">View</a>
-                              <a href="#" class="btn btn-info">Edit</a>
-                              <a href="#" class="btn btn-danger">Delete</a>
-                            </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>1</td>
-                        <td>28-10-2017</td>
-                        <td><strong><a href="#">Quiz Test</a></strong></td>
-                        <td>English</td>
-                        <td>30</td>
-                        <td>Md Abul Kalam</td>
-                        <td>
-                            <div class="left_pad">
-                              <a href="#" class="btn btn-primary">View</a>
-                              <a href="#" class="btn btn-info">Edit</a>
-                              <a href="#" class="btn btn-danger">Delete</a>
-                            </div>
-                        </td>
-                      </tr>
+                    <?php
+                      }
+                    ?>
+                     
                     </tbody>
                 </table>
             </div>

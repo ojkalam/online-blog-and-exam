@@ -38,7 +38,7 @@ include_once "admin_header.php";
           <i class="fa fa-table"></i> All Subjects</div>
         <div class="card-body">
           <?php 
-            //delete posts
+            //delete subject
               if (isset($_GET['delsub'])){
                   $delid = $_GET['delsub'] ;
                   $delete = $ad->daleteSubject($delid);
@@ -67,7 +67,7 @@ include_once "admin_header.php";
                 ?>
                 <tr>
                   <td><?php echo $i;?></td>
-                  <td><?php echo$row['name'];?></td>
+                  <td><?php echo $row['name'];?></td>
                   
                   <td><a href="?delsub=<?php echo $row['id'];?>" class="btn btn-danger btn-sm">Delete</a></td>
                 </tr>

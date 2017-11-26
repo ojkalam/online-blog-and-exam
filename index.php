@@ -18,12 +18,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
             ?>
             <ul class="nav nav-pills">
-               <li class="active"><a href="#section1" data-toggle="tab">Recent Posts</a></li>
-               <li><a href="#section2" data-toggle="tab">Write Post</a></li>
+               <li class="active"><a href="#section1" data-toggle="tab"><i class="fa fa-th" aria-hidden="true"></i> <strong>Recent Posts</strong></a></li>
+               <?php 
+              if (Session::get("checkusertype")) { 
+                ?>
+          <li><a  href="#section2" data-toggle="tab"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <strong>Write Post</strong></a></li>
+          <?php } ?>
            </ul>
 
            <?php
-            $per_page = 5;
+            $per_page = 6;
             if (isset($_GET['page'])) {
               $page= $_GET['page'];
             }else{
@@ -68,6 +72,62 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                  </ul>
 
                 <?php
+                    }else if(isset($_GET['uid'])) {
+                        $uid= $_GET['uid'];
+                ?>
+              <!-- view individual posts -->
+                 <ul class="list-group">
+                    <?php
+                    $uname = Session::get('username');
+                    //get users posts
+                        $upost = $pc->userPost($uid);
+                        if ($upost) {
+                          $countpost = $upost->num_rows;
+                          echo "<h4 style='text-align:center;color:green'>$countpost Posts found of user: <strong>$uname</strong></h4>";
+                          while ($row = $upost->fetch_assoc()) {
+                    ?>
+                              <li class="list-group-item">
+                                <a href="singlepost.php?pid=<?php echo $row['id'];?>"><?php echo $row['title'];?></a>
+                                <span class="badge">10 answers</span><br><span class="postedby">posted by <?php echo $row['username'];?> on <?php echo $fm->formatdate($row['pdate']);?> | subject: <a href="#"><?php echo $row['name'];?></a></span>
+                              </li>
+
+                    <?php     
+                          }
+                        }else{
+                            echo "<span class='error' style='font-size:20px;text-align:center'>No post found !</span>";
+                        }
+                    ?>
+                 </ul>
+                 <!-- end individual post showing -->
+
+
+                <?php
+                    }else if(isset($_GET['search'])) {
+                        $key= $_GET['search'];
+                ?>
+              <!-- view search posts -->
+                 <ul class="list-group">
+                    <?php
+                        $spost = $pc->searchPost($key);
+                        if ($spost) {
+                          $countpost = $spost->num_rows;
+                          echo "<h4 style='text-align:center;color:green'>$countpost result found !</h4>";
+                          while ($row = $spost->fetch_assoc()) {
+                    ?>
+                              <li class="list-group-item">
+                                <a href="singlepost.php?pid=<?php echo $row['id'];?>"><?php echo $row['title'];?></a>
+                                <span class="badge">10 answers</span><br><span class="postedby">posted by <?php echo $row['username'];?> on <?php echo $fm->formatdate($row['pdate']);?> | subject: <a href="#"><?php echo $row['name'];?></a></span>
+                              </li>
+
+                    <?php     
+                          }
+                        }else{
+                            echo "<span class='error' style='font-size:20px;text-align:center'>No post found !</span>";
+                        }
+                    ?>
+                 </ul>
+                  <!-- end search posts -->
+                <?php
                     }else{
                  ?>
                  <ul class="list-group">
@@ -75,14 +135,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                       $allpost = $pc->getAllPost($start_from, $per_page);
                       if (count($allpost)>0) {
                         while ($row = $allpost->fetch_assoc()) {
-                  ?>
+
+                          $getcomment = $pc->getSinglePostComment($row['id']);
+                          if($getcomment){
+                            $countc = $getcomment->num_rows;
+                          }
+
+                  ?>  
                             <li class="list-group-item">
-                              <a href="singlepost.php?pid=<?php echo $row['id'];?>"><?php echo $row['title'];?></a>
-                              <span class="badge">10 answers</span><br><span class="postedby">posted by <?php echo $row['username'];?> on <?php echo $fm->formatdate($row['pdate']);?> | subject: <a href="#"><?php echo $row['name'];?></a></span>
+                              <a style="font-size: 18px;" href="singlepost.php?pid=<?php echo $row['id'];?>"><?php echo $row['title'];?></a>
+                              <span class="badge"><?php echo $countc; ?> answers</span><br><span class="postedby">posted by <strong><?php echo $row['username'];?></strong> on <?php echo $fm->formatdate($row['pdate']);?> | subject: <a href="#"><?php echo $row['name'];?></a></span>
                             </li>
 
-                  <?php     
+                  <?php 
+                    $countc = 0;    
                         }
+
                       }else{
                           echo $allpost;
                       }
@@ -124,6 +192,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <?php } ?>
          </div>
          </div>
+          <?php 
+              if (Session::get("checkusertype")) {
+               
+          ?>
                <div class="tab-pane fade" id="section2">
                    <form action="" method="post" role="form" enctype="multipart/form-data">
                 <!-- <div class="arrow"></div> -->
@@ -170,6 +242,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                   </div>
                </form>
               </div>
+            <?php } ?>
+              <!-- end of section 2 -->
            </div>
               
           </div>

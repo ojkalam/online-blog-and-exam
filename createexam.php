@@ -11,22 +11,37 @@ include_once "header.php";
             </div>
             <div class="col-md-6 text-right examlistpad">
                 <div class="">
-                  <a href="#" class="btn btn-primary">Subjects</a>
+                  <a href="examlist.php" class="btn btn-primary">Show Exams</a>
                 </div>
             </div>
         </div>
         <div class="row" id="postdetails">
             <div class="col-md-6 col-md-offset-3" style="padding:20px;">
+          <?php
+          $tch = Session::get("username");
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $added = $ex->createExam($_POST, $tch);
+                if ($added){
+                 header("Location: addquestion.php");
+              }else{
+                echo "<span class='error'>Field must not be empty.</span>";
+              }
+           }
+    ?>
               <form action="" method="POST" role="form">
                <div class="form-group">
                    <label class="control-label" for="form-elem-1">Exam Title:</label>
-                   <input type="text" id="form-elem-1" class="form-control">
+                   <input type="text" name="extitle" id="form-elem-1" class="form-control">
                </div>
                <div class="form-group">
                    <select name="subject" class="form-control pull-left">
-                      <option selected="selected">Select Subject</option>
-                      <option value="2">Only my friends</option>
-                      <option value="3">Only me</option>
+                     <option value="0">Select Subject</option>
+                   <?php 
+                    $getsub= $pc->getSubject();
+                    while ($row = $getsub->fetch_assoc()) {
+                   ?>
+                      <option value="<?php echo $row['name'];?>"><?php echo $row['name'];?></option>
+                  <?php } ?>
                    </select> 
                </div>
                <div class="form-group">

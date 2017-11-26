@@ -10,10 +10,18 @@
             </tr>
     </table>
     </div>
-  </div>
+   </div>
+    <div class="row" style="padding-bottom:10px">
+        <form class="navbar-form navbar-left" role="search" action="" method="GET">
+          <div class="form-group">
+            <input style="width:310px;" type="text" name="search" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></button>
+        </form> 
+    </div>
     <div class="panel panel-default">
         <div class="panel-heading">
-           <h3 class="panel-title">Class (IX) & (X) Subjects</h3>
+           <br><h3 class="panel-title">Class (IX) & (X) Subjects</h3>
         </div>
         <div class="list-group subject_link">
           <?php
@@ -24,6 +32,7 @@
               $allpost = $pc->getTotalPostRows();
               $allpost = $allpost->num_rows;
           ?>
+                <a style='color:#c0392b' href="index.php?uid=<?php echo Session::get("userid");?>" class="list-group-item">Only My Posts (<?php echo "<span style='color:#8e44ad'>".$allpost;?> posts</span>)</a>
                 <a href="index.php" class="list-group-item">All Posts (<?php echo "<span style='color:#8e44ad'>".$allpost;?> posts</span>)</a>
           <?php
                 while ($row = $subs->fetch_assoc()) {
