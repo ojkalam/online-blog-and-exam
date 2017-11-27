@@ -29,7 +29,7 @@ if (isset($_GET['exid']) && isset($_GET['qs'])) {
             </div>
             <div class="col-md-6 text-right examlistpad">
                 <div class="">
-                  <a href="#" class="btn btn-danger">End Test</a>
+                  <!--<a href="#" class="btn btn-danger">End Test</a>-->
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@ if (isset($_GET['exid']) && isset($_GET['qs'])) {
 				<form accept-charset="UTF-8" role="form" action="" method="POST">
                     <fieldset>
                     	<?php 
-                    		$getans = $ex->getAns($qsno);
+                    		$getans = $ex->getAns($qsno, $exid);
                     		while($ans = $getans->fetch_assoc()){
                     	?>
 			    		<div class="radio">

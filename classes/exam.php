@@ -53,9 +53,9 @@ Class Exam{
 				foreach ($ans as $key => $ansName) {
 					if ($ansName != ''){
 						if ($rightAns == $key) {
-						$rquery ="INSERT INTO tbl_ans(quesNo, rightAns, ans) VALUES('$quesNo', '1', '$ansName')";
+						$rquery ="INSERT INTO tbl_ans(quesNo,examid, rightAns, ans) VALUES('$quesNo', '$examid', '1', '$ansName')";
 						}else{
-						$rquery ="INSERT INTO tbl_ans(quesNo, rightAns, ans) VALUES('$quesNo', '0', '$ansName')";
+						$rquery ="INSERT INTO tbl_ans(quesNo, examid, rightAns, ans) VALUES('$quesNo', '$examid', '0', '$ansName')";
 						}
 						$insertrow = $this->db->insert($rquery);
 						if($insertrow){
@@ -184,8 +184,8 @@ Class Exam{
 	}
 
 	//get question answer
-		public function getAns($qno){
-			$query = "SELECT * FROM tbl_ans WHERE quesNo='$qno'";
+		public function getAns($qno, $exid){
+			$query = "SELECT * FROM tbl_ans WHERE quesNo='$qno' and examid ='$exid'";
 			$getData = $this->db->select($query);	
 			return $getData;
 		}

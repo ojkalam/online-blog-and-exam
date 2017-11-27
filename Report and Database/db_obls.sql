@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2017 at 02:55 PM
+-- Generation Time: Nov 27, 2017 at 02:15 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -49,6 +49,7 @@ INSERT INTO `tbl_admin` (`id`, `user`, `pass`) VALUES
 CREATE TABLE `tbl_ans` (
   `id` int(11) NOT NULL,
   `quesNo` tinyint(4) NOT NULL,
+  `examid` int(11) NOT NULL,
   `rightAns` tinyint(4) NOT NULL,
   `ans` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -57,27 +58,43 @@ CREATE TABLE `tbl_ans` (
 -- Dumping data for table `tbl_ans`
 --
 
-INSERT INTO `tbl_ans` (`id`, `quesNo`, `rightAns`, `ans`) VALUES
-(129, 1, 1, 'dummy text'),
-(130, 1, 0, 'another'),
-(131, 1, 0, 'dsfsd'),
-(132, 1, 0, 'sdfdsf'),
-(133, 2, 0, 'we'),
-(134, 2, 0, 'they'),
-(135, 2, 0, 'all'),
-(136, 2, 1, 'web developer'),
-(137, 3, 0, 'easy'),
-(138, 3, 0, 'learn'),
-(139, 3, 1, 'both'),
-(140, 3, 0, 'hard'),
-(141, 1, 1, 'water'),
-(142, 1, 0, 'soil'),
-(143, 1, 0, 'gold'),
-(144, 1, 0, 'air'),
-(145, 2, 1, 'we'),
-(146, 2, 0, 'dfs'),
-(147, 2, 0, 'df'),
-(148, 2, 0, 'sdfdsf');
+INSERT INTO `tbl_ans` (`id`, `quesNo`, `examid`, `rightAns`, `ans`) VALUES
+(169, 1, 18, 0, 'dummy text'),
+(170, 1, 18, 0, 'Hyper link markup language'),
+(171, 1, 18, 1, 'Hide text markup language'),
+(172, 1, 18, 0, 'Hyper text'),
+(173, 2, 18, 0, 'dummy text'),
+(174, 2, 18, 0, 'another'),
+(175, 2, 18, 1, 'Hide text markup language'),
+(176, 2, 18, 0, 'sdfdsf'),
+(177, 3, 18, 0, 'dummy text'),
+(178, 3, 18, 0, 'another'),
+(179, 3, 18, 0, 'dsfsd'),
+(180, 3, 18, 1, 'rew'),
+(181, 4, 18, 0, 'dummy text'),
+(182, 4, 18, 0, 'another'),
+(183, 4, 18, 0, 'df'),
+(184, 4, 18, 1, 'sdfdsf'),
+(185, 1, 19, 0, 'we'),
+(186, 1, 19, 0, 'Hyper link markup language'),
+(187, 1, 19, 1, 'dsfsd'),
+(188, 1, 19, 0, 'rew'),
+(189, 2, 19, 0, 'dummy text'),
+(190, 2, 19, 0, 'Hyper link markup language'),
+(191, 2, 19, 0, 'df'),
+(192, 2, 19, 1, 'rew'),
+(193, 3, 19, 0, 'we'),
+(194, 3, 19, 1, 'Hyper link markup language'),
+(195, 3, 19, 0, 'Hide text markup language'),
+(196, 3, 19, 0, 'sdfdsf'),
+(197, 4, 19, 1, 'werwe'),
+(198, 4, 19, 0, 'Hyper link markup language'),
+(199, 4, 19, 0, 'Hide text markup language'),
+(200, 4, 19, 0, 'rew'),
+(201, 5, 19, 0, 'werwe'),
+(202, 5, 19, 0, 'Hyper link markup language'),
+(203, 5, 19, 0, 'dsfsd'),
+(204, 5, 19, 1, 'sdfdsf');
 
 -- --------------------------------------------------------
 
@@ -131,8 +148,8 @@ CREATE TABLE `tbl_exam` (
 --
 
 INSERT INTO `tbl_exam` (`id`, `name`, `subject`, `author`, `edate`) VALUES
-(15, 'Quiz test 1', 'ICT', 'fkarim', '2017-11-26 13:41:11'),
-(16, 'Western Exam 1', 'Chemistry', 'fkarim', '2017-11-26 13:48:47');
+(18, 'Quiz Test 2', 'ICT', 'fkarim', '2017-11-27 01:10:05'),
+(19, 'Western Exam', 'English', 'fkarim', '2017-11-27 01:13:04');
 
 -- --------------------------------------------------------
 
@@ -179,11 +196,15 @@ CREATE TABLE `tbl_ques` (
 --
 
 INSERT INTO `tbl_ques` (`id`, `quesNo`, `ques`, `examid`) VALUES
-(33, 1, 'Why do we use it?', 15),
-(34, 2, 'Why do we use it?', 15),
-(35, 3, 'What is the benefit of html', 15),
-(36, 1, 'H2O means ?', 16),
-(37, 2, 'Why do we use it?', 16);
+(43, 1, 'What does HTML stand for?', 18),
+(44, 2, 'Why do we use it?', 18),
+(45, 3, 'capital of bd', 18),
+(46, 4, 'sdfsdfsdfsds fds', 18),
+(47, 1, 'Why do we use it?', 19),
+(48, 2, 'Why do we use it?', 19),
+(49, 3, 'sdfsdfsdfsds fds', 19),
+(50, 4, 'Why do we use it?', 19),
+(51, 5, 'What does HTML stand for?', 19);
 
 -- --------------------------------------------------------
 
@@ -204,7 +225,9 @@ CREATE TABLE `tbl_result` (
 --
 
 INSERT INTO `tbl_result` (`id`, `exname`, `exid`, `userid`, `score`) VALUES
-(21, 'Quiz test 1', 15, 1, 3);
+(21, 'Quiz test 1', 15, 1, 3),
+(22, 'Quiz Test 2', 18, 1, 0),
+(23, 'Western Exam', 19, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -368,7 +391,7 @@ ALTER TABLE `tbl_admin`
 -- AUTO_INCREMENT for table `tbl_ans`
 --
 ALTER TABLE `tbl_ans`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=205;
 --
 -- AUTO_INCREMENT for table `tbl_comment`
 --
@@ -378,7 +401,7 @@ ALTER TABLE `tbl_comment`
 -- AUTO_INCREMENT for table `tbl_exam`
 --
 ALTER TABLE `tbl_exam`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `tbl_post`
 --
@@ -388,12 +411,12 @@ ALTER TABLE `tbl_post`
 -- AUTO_INCREMENT for table `tbl_ques`
 --
 ALTER TABLE `tbl_ques`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT for table `tbl_result`
 --
 ALTER TABLE `tbl_result`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `tbl_student`
 --
