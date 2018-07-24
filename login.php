@@ -1,13 +1,21 @@
 <?php
+//code for cache-control
+  header("Cache-Control: no-cache, must-revalidate");
+  header("Pragma: no-cache"); 
+  header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); 
+  header("Cache-Control: max-age=2592000");
+?>
+<?php
 ob_start();
 
-  include "/libs/session.php";
+  $filepath = realpath(dirname(__FILE__));
+  //var_dump($filepath);
+  include "libs/Session.php";
   Session::init();
   Session::checkLogin();
 
-  $filepath = realpath(dirname(__FILE__));
-  include_once ($filepath."/libs/Database.php");
-  include_once ($filepath."/helpers/Format.php");
+
+  // include_once $filepath."/libs/Database.php";
 
   spl_autoload_register(function($class){
     include_once "classes/".$class.".php";
@@ -20,13 +28,6 @@ ob_start();
 
 ?>
 
-<?php
-//code for cache-control
-  header("Cache-Control: no-cache, must-revalidate");
-  header("Pragma: no-cache"); 
-  header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); 
-  header("Cache-Control: max-age=2592000");
-?>
 <?php
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
         $userlogin = $user->userLogin($_POST);
@@ -94,6 +95,12 @@ ob_start();
 			</div>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3"><p class="mt-5 mb-3 text-muted text-center">Developed by &copy; Md Abul Kalam - 2017 </p></div>
+	</div>
 </div>
 </body>
 </html>
+<?php
+ob_end_flush();
+?>

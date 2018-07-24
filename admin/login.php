@@ -1,7 +1,7 @@
 <?php
 ob_start();
 
-  include "/../libs/session.php";
+  include "../libs/Session.php";
   Session::init();
   Session::checkAdminLogin();
 
@@ -10,7 +10,7 @@ ob_start();
   include_once ($filepath."/../helpers/Format.php");
 
   spl_autoload_register(function($class){
-    include_once "/../classes/".$class.".php";
+    include_once "../classes/".$class.".php";
   });
 
   //creating object of classes

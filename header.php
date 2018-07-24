@@ -1,32 +1,23 @@
 <?php
-error_reporting(0);
 ob_start();
+  include_once "libs/Session.php";
+  $filepath = realpath(dirname(__FILE__));
 
-  include "/libs/session.php";
+  include_once ($filepath."/helpers/Format.php");
+
   Session::init();
   Session::checkSession();
-  $filepath = realpath(dirname(__FILE__));
-  include_once ($filepath."/libs/Database.php");
-  include_once ($filepath."/helpers/Format.php");
 
   spl_autoload_register(function($class){
     include_once "classes/".$class.".php";
   });
 
   //creating object of classes
-  $db = new Database();
-  $fm = new Format();
+
   $pc = new PostComment();
   $ex = new Exam();
+  $fm = new Format();
 
-?>
-
-<?php
-//code for cache-control
-  header("Cache-Control: no-cache, must-revalidate");
-  header("Pragma: no-cache"); 
-  header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); 
-  header("Cache-Control: max-age=2592000");
 ?>
 
 <!DOCTYPE html>

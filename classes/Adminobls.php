@@ -1,8 +1,8 @@
 <?php
-	include_once ("/../libs/Session.php");
-    include_once ("/../libs/Database.php");
-    include_once ("/../helpers/Format.php");
-	
+$filepath = realpath(dirname(__FILE__));
+include_once ($filepath."/../libs/Database.php");
+include_once ($filepath."/../libs/Session.php");
+include_once ($filepath."/../helpers/Format.php");
 
 Class Adminobls{
 

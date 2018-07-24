@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2017 at 02:15 AM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- Generation Time: Jul 24, 2018 at 03:53 PM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -59,42 +61,30 @@ CREATE TABLE `tbl_ans` (
 --
 
 INSERT INTO `tbl_ans` (`id`, `quesNo`, `examid`, `rightAns`, `ans`) VALUES
-(169, 1, 18, 0, 'dummy text'),
-(170, 1, 18, 0, 'Hyper link markup language'),
-(171, 1, 18, 1, 'Hide text markup language'),
-(172, 1, 18, 0, 'Hyper text'),
-(173, 2, 18, 0, 'dummy text'),
-(174, 2, 18, 0, 'another'),
-(175, 2, 18, 1, 'Hide text markup language'),
-(176, 2, 18, 0, 'sdfdsf'),
-(177, 3, 18, 0, 'dummy text'),
-(178, 3, 18, 0, 'another'),
-(179, 3, 18, 0, 'dsfsd'),
-(180, 3, 18, 1, 'rew'),
-(181, 4, 18, 0, 'dummy text'),
-(182, 4, 18, 0, 'another'),
-(183, 4, 18, 0, 'df'),
-(184, 4, 18, 1, 'sdfdsf'),
-(185, 1, 19, 0, 'we'),
-(186, 1, 19, 0, 'Hyper link markup language'),
-(187, 1, 19, 1, 'dsfsd'),
-(188, 1, 19, 0, 'rew'),
-(189, 2, 19, 0, 'dummy text'),
-(190, 2, 19, 0, 'Hyper link markup language'),
-(191, 2, 19, 0, 'df'),
-(192, 2, 19, 1, 'rew'),
-(193, 3, 19, 0, 'we'),
-(194, 3, 19, 1, 'Hyper link markup language'),
-(195, 3, 19, 0, 'Hide text markup language'),
-(196, 3, 19, 0, 'sdfdsf'),
-(197, 4, 19, 1, 'werwe'),
-(198, 4, 19, 0, 'Hyper link markup language'),
-(199, 4, 19, 0, 'Hide text markup language'),
-(200, 4, 19, 0, 'rew'),
-(201, 5, 19, 0, 'werwe'),
-(202, 5, 19, 0, 'Hyper link markup language'),
-(203, 5, 19, 0, 'dsfsd'),
-(204, 5, 19, 1, 'sdfdsf');
+(205, 1, 21, 0, 'Lotus'),
+(206, 1, 21, 0, 'MS-Excel'),
+(207, 1, 21, 1, 'Pascal'),
+(208, 1, 21, 0, 'Netscape'),
+(209, 2, 21, 0, 'Sand'),
+(210, 2, 21, 1, 'Water'),
+(211, 2, 21, 0, 'Cities'),
+(212, 2, 21, 0, 'Mountain'),
+(213, 1, 22, 0, 'playing'),
+(214, 1, 22, 1, 'play'),
+(215, 1, 22, 0, 'am playing'),
+(216, 1, 22, 0, 'am play'),
+(217, 2, 22, 0, 'try'),
+(218, 2, 22, 0, 'tries'),
+(219, 2, 22, 0, 'tried'),
+(220, 2, 22, 1, 'is trying'),
+(221, 3, 22, 0, 'obtain'),
+(222, 3, 22, 0, 'get'),
+(223, 3, 22, 0, 'need'),
+(224, 3, 22, 1, 'botn 1 &amp; 2'),
+(225, 4, 22, 0, 'accept'),
+(226, 4, 22, 1, 'reject'),
+(227, 4, 22, 0, 'make'),
+(228, 4, 22, 0, 'take');
 
 -- --------------------------------------------------------
 
@@ -127,7 +117,14 @@ INSERT INTO `tbl_comment` (`id`, `comment`, `postid`, `username`) VALUES
 (11, 'sdfsd', 33, 'tipu'),
 (12, 'dsfsdf', 27, 'tipu'),
 (13, 'ada asd', 33, 'tipu'),
-(14, 'aa dasd dasd', 34, 'tipu');
+(14, 'aa dasd dasd', 34, 'tipu'),
+(15, 'hello buddy', 35, 'tipu'),
+(16, 'hello', 29, 'tipu'),
+(17, 'asdfs', 29, ''),
+(18, 'asdf', 29, 'tipu'),
+(19, 'hi there', 29, 'kalam'),
+(20, 'hello', 38, 'tipu'),
+(21, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et.', 38, 'tipu');
 
 -- --------------------------------------------------------
 
@@ -148,8 +145,8 @@ CREATE TABLE `tbl_exam` (
 --
 
 INSERT INTO `tbl_exam` (`id`, `name`, `subject`, `author`, `edate`) VALUES
-(18, 'Quiz Test 2', 'ICT', 'fkarim', '2017-11-27 01:10:05'),
-(19, 'Western Exam', 'English', 'fkarim', '2017-11-27 01:13:04');
+(21, 'Quiz test 1', 'ICT', 'raihan', '2017-12-05 19:50:08'),
+(22, 'Quiz test 1 fall', 'English', 'fkarim', '2017-12-05 20:06:07');
 
 -- --------------------------------------------------------
 
@@ -176,7 +173,10 @@ INSERT INTO `tbl_post` (`id`, `title`, `description`, `user_id`, `sub_id`, `pdat
 (29, 'à¦•à§‹à¦¨ à¦ªà¦¤à§à¦°à¦¿à¦•à¦¾à§Ÿ à¦•à¦¬à¦¿à¦¤à¦¾ à¦ªà§à¦°à¦•à¦¾à¦¶à§‡à¦° à¦®à¦¾à¦§à§à¦¯à¦®à§‡ à¦¬à¦™à§à¦•à¦¿à¦®à¦šà¦¨à§à¦¦à§à¦° à¦šà¦Ÿà§à¦°à§‹à¦ªà¦¾à¦§à§à¦¯à¦¾à§Ÿà§‡à¦° à¦¸à¦¾à¦¹à¦¿à¦¤à§à¦¯ à¦œà§€à¦¬à¦¨à§‡à¦° à¦¸à§‚à¦šà¦¨à¦¾ à¦˜à¦Ÿà§‡?', '<ul class=\"wpProQuiz_questionList\" style=\"box-sizing: inherit; padding: 0px; margin: 0px 0px 1.5em 2em; font-variant-numeric: inherit; font-stretch: inherit; font-size: 13px; line-height: inherit; font-family: \'Helvetica Neue\', HelveticaNeue, Helvetica, Arial, \'Lucida Grande\', sans-serif; vertical-align: baseline; overflow: auto; color: #555555; list-style: none !important; border: 1px solid #d5d5d5 !important; background: #f7f7f7 !important;\" data-question_id=\"3577\" data-type=\"single\">\r\n<li class=\"wpProQuiz_questionListItem\" style=\"box-sizing: inherit; padding: 3px !important; border: 0px !important; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; background-image: none !important; list-style: none !important; margin: 0px 0px 5px !important 0px !important;\" data-pos=\"0\"><label style=\"box-sizing: inherit; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; display: inline; margin: 0px !important;\">à¦¬à¦™à§à¦—à¦¦à¦°à§à¦¶à¦¨</label></li>\r\n<li class=\"wpProQuiz_questionListItem\" style=\"box-sizing: inherit; padding: 3px !important; border: 0px !important; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; background-image: none !important; list-style: none !important; margin: 0px 0px 5px !important 0px !important;\" data-pos=\"1\"><label style=\"box-sizing: inherit; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; display: inline; margin: 0px !important;\"><input class=\"wpProQuiz_questionInput\" style=\"color: #707070; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: 1rem; line-height: 1.5; font-family: SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif; padding: 0px; margin-top: 0px !important; margin-right: 0px !important; margin-left: 0px !important; display: inline !important; float: none !important;\" name=\"question_303_3577\" type=\"radio\" value=\"2\" />&nbsp;à¦¸à¦‚à¦¬à¦¾à¦¦ à¦ªà§à¦°à¦­à¦¾à¦•à¦°</label></li>\r\n<li class=\"wpProQuiz_questionListItem\" style=\"box-sizing: inherit; padding: 3px !important; border: 0px !important; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; background-image: none !important; list-style: none !important; margin: 0px 0px 5px !important 0px !important;\" data-pos=\"2\"><label style=\"box-sizing: inherit; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; display: inline; margin: 0px !important;\"><input class=\"wpProQuiz_questionInput\" style=\"color: #707070; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: 1rem; line-height: 1.5; font-family: SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif; padding: 0px; margin-top: 0px !important; margin-right: 0px !important; margin-left: 0px !important; display: inline !important; float: none !important;\" name=\"question_303_3577\" type=\"radio\" value=\"3\" />&nbsp;à¦¤à¦¤à§à¦¤à§à¦¬à¦¬à§‹à¦§à¦¿à¦¨à§€</label></li>\r\n<li class=\"wpProQuiz_questionListItem\" style=\"box-sizing: inherit; padding: 3px !important; border: 0px !important; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; background-image: none !important; list-style: none !important; overflow: auto; margin: 0px 0px 0px !important 0px !important;\" data-pos=\"3\"><label style=\"box-sizing: inherit; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; display: inline; margin: 0px !important;\"><input class=\"wpProQuiz_questionInput\" style=\"color: #707070; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: 1rem; line-height: 1.5; font-family: SolaimanLipi, Arial, Vrinda, FallbackBengaliFont, Helvetica, sans-serif; padding: 0px; margin-top: 0px !important; margin-right: 0px !important; margin-left: 0px !important; display: inline !important; float: none !important;\" name=\"question_303_3577\" type=\"radio\" value=\"4\" />&nbsp;à¦¸à¦‚à¦¬à¦¾à¦¦ à¦•à§Œà¦®à§à¦¦à§€</label></li>\r\n</ul>', 1, 1, '2017-11-23 21:12:19', ''),
 (32, 'Post from another account', '<p>Post from another accountPost from another accountPost from another accountPost from another accountPost from another accountPost from another accountPost from another accountPost from another accountPost from another accountPost from another accountPost from another accountPost from another accountPost from another account</p>', 2, 3, '2017-11-24 10:15:17', 'uploads/e471edaf95.jpg'),
 (33, 'Whah is HTML', '<p>Hyper text markup lang</p>', 1, 6, '2017-11-26 13:46:39', 'uploads/532fb7de1b.jpg'),
-(34, 'sdf sdfsdfsd', '<p>fasddf sdf</p>', 1, 6, '2017-11-26 13:47:37', 'uploads/e95fc21dfa.jpg');
+(35, 'What is Lorem Ipsum?', '<p><strong style=\"margin: 0px; padding: 0px; font-family: \'Open Sans\', Arial, sans-serif; text-align: justify;\">Lorem Ipsum</strong><span style=\"font-family: \'Open Sans\', Arial, sans-serif; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</span></p>', 1, 4, '2017-12-05 19:45:40', 'uploads/d6a1ee53a6.jpg'),
+(36, 'Where does it come from?', '<p><span style=\"font-family: \'Open Sans\', Arial, sans-serif; text-align: justify;\">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"</span></p>', 1, 6, '2017-12-05 19:46:46', 'uploads/4736726ea6.jpg'),
+(37, 'Where can I get some?', '<p><span style=\"font-family: \'Open Sans\', Arial, sans-serif; text-align: justify;\">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</span></p>', 1, 4, '2017-12-05 19:47:23', 'uploads/4a756cb350.png'),
+(38, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et fermentum dui. Ut orci quam, ornare sed lorem sed, hendrerit auctor dolor. Nulla viverra</p>\r\n<p>, nibh quis ultrices malesuada, ligula ipsum vulputate diam, aliquam egestas nibh ante vel dui. Sed in tellus interdum eros vulputate placerat sed non enim. Pellentesque eget.</p>', 1, 3, '2018-07-24 13:43:16', '');
 
 -- --------------------------------------------------------
 
@@ -196,15 +196,12 @@ CREATE TABLE `tbl_ques` (
 --
 
 INSERT INTO `tbl_ques` (`id`, `quesNo`, `ques`, `examid`) VALUES
-(43, 1, 'What does HTML stand for?', 18),
-(44, 2, 'Why do we use it?', 18),
-(45, 3, 'capital of bd', 18),
-(46, 4, 'sdfsdfsdfsds fds', 18),
-(47, 1, 'Why do we use it?', 19),
-(48, 2, 'Why do we use it?', 19),
-(49, 3, 'sdfsdfsdfsds fds', 19),
-(50, 4, 'Why do we use it?', 19),
-(51, 5, 'What does HTML stand for?', 19);
+(52, 1, 'Which of the following is a programming language?', 21),
+(53, 2, 'Which of the following covers most of the Earth\'s surface?', 21),
+(54, 1, 'I ..... tennis every Sunday morning.', 22),
+(55, 2, 'Don\'t make so much noise. Noriko ..... to study for her ESL test!', 22),
+(56, 3, 'Synonyms of  \'accept\'', 22),
+(57, 4, 'Antonyms of  \'deny\'', 22);
 
 -- --------------------------------------------------------
 
@@ -225,9 +222,10 @@ CREATE TABLE `tbl_result` (
 --
 
 INSERT INTO `tbl_result` (`id`, `exname`, `exid`, `userid`, `score`) VALUES
-(21, 'Quiz test 1', 15, 1, 3),
-(22, 'Quiz Test 2', 18, 1, 0),
-(23, 'Western Exam', 19, 1, 0);
+(25, 'Quiz test 1', 21, 1, 2),
+(26, 'Quiz test 1 fall', 22, 1, 1),
+(27, 'Quiz test 1', 21, 1, 1),
+(28, 'Quiz test 1 fall', 22, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -307,7 +305,7 @@ CREATE TABLE `tbl_teacher` (
 --
 
 INSERT INTO `tbl_teacher` (`id`, `name`, `username`, `password`, `degree`, `phone`) VALUES
-(1, 'Foyzul Karim', 'fkarim', '456', 'M.A.', '0165987488'),
+(1, 'Md Abul Kalam', 'Kalam', '123', 'M.A.', '0165987488'),
 (3, 'Naym Mia', 'naym', '456', 'B.COM', '01675630445'),
 (5, 'Raihan Sarkar', 'raihan', '123', 'MBA', '01715232504'),
 (6, 'Rashed Hasan', 'rsd', '123', 'MSC', '01676645879'),
@@ -387,51 +385,62 @@ ALTER TABLE `tbl_teacher`
 --
 ALTER TABLE `tbl_admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `tbl_ans`
 --
 ALTER TABLE `tbl_ans`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=205;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=229;
+
 --
 -- AUTO_INCREMENT for table `tbl_comment`
 --
 ALTER TABLE `tbl_comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
 --
 -- AUTO_INCREMENT for table `tbl_exam`
 --
 ALTER TABLE `tbl_exam`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
 --
 -- AUTO_INCREMENT for table `tbl_post`
 --
 ALTER TABLE `tbl_post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
 --
 -- AUTO_INCREMENT for table `tbl_ques`
 --
 ALTER TABLE `tbl_ques`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+
 --
 -- AUTO_INCREMENT for table `tbl_result`
 --
 ALTER TABLE `tbl_result`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
 --
 -- AUTO_INCREMENT for table `tbl_student`
 --
 ALTER TABLE `tbl_student`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
 -- AUTO_INCREMENT for table `tbl_subject`
 --
 ALTER TABLE `tbl_subject`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `tbl_teacher`
 --
 ALTER TABLE `tbl_teacher`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

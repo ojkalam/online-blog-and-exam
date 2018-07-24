@@ -170,7 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                  <ul class="list-group">
                   <?php
                       $allpost = $pc->getAllPost($start_from, $per_page);
-                      if (count($allpost)>0) {
+                      if ($allpost->num_rows) {
                         while ($row = $allpost->fetch_assoc()) {
 
                           $getcomment = $pc->getSinglePostComment($row['id']);

@@ -93,3 +93,6 @@ $pdf->Ln();
 $pdf->Ln();		
 ob_end_clean();
 $pdf->Output();
+
+//unset php session
+unset($_SESSION['score']);
