@@ -5,7 +5,6 @@
 ## Installation 
  * Import ```db_obls.sql``` database file.
  * ```config/config.php``` contains database access information
- * Run it on any PHP supported webserver 
 
 
 ### Login access for different roles
